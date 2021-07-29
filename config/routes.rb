@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'homes#top'
+    resources :posts, only: [:show, :edit, :update, :destroy]
     resources :genres, only: [:index, :create, :edit, :update]
   end
 
