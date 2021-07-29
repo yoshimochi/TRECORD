@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :admins, controllers: {
+  sessions: 'admins/sessions'
+  }
+
   devise_for :users, path: "users", controllers: {
     sessions:      'users/sessions',
     passwords:     'users/passwords',
@@ -13,7 +17,7 @@ Rails.application.routes.draw do
       resources :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
-    
+
     resources :users
     get '/:username/unsubscribe' => 'users#unsubscribe'
     patch '/:username/widthdraw' => 'users#widthdraw', as: "users_widthdraw"
