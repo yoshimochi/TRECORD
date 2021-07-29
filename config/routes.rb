@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :admins, controllers: {
+  sessions: 'admins/sessions'
+  }
+
+  namespace :admin do
+    resources :genres, only: [:index, :create, :edit, :update]
+  end
+
   devise_for :users, path: "users", controllers: {
     sessions:      'users/sessions',
     passwords:     'users/passwords',
@@ -13,7 +21,16 @@ Rails.application.routes.draw do
       resources :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
-    
+
+    resources :genres, only: [:index, :show]
+    resources :events, only: [:new, :create, :index, :show]
+
+    resources :set_events, only:[:index, :update, :destroy, :create] do
+      collection do
+        delete 'destroy_all'
+      end
+    end
+
     resources :users
     get '/:username/unsubscribe' => 'users#unsubscribe'
     patch '/:username/widthdraw' => 'users#widthdraw', as: "users_widthdraw"
