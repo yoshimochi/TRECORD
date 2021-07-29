@@ -22,6 +22,9 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:create, :destroy]
     end
 
+    resources :genres, only: [:index, :show]
+    resources :events, only: [:new, :create, :index, :show]
+
     resources :users
     get '/:username/unsubscribe' => 'users#unsubscribe'
     patch '/:username/widthdraw' => 'users#widthdraw', as: "users_widthdraw"
