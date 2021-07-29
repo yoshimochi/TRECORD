@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_29_154504) do
+ActiveRecord::Schema.define(version: 2021_07_29_160917) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -62,6 +62,12 @@ ActiveRecord::Schema.define(version: 2021_07_29_154504) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "records", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "relationships", force: :cascade do |t|
     t.integer "user_id"
     t.integer "follower_id"
@@ -79,6 +85,17 @@ ActiveRecord::Schema.define(version: 2021_07_29_154504) do
     t.integer "event_id"
     t.integer "user_id"
     t.integer "record_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "training_records", force: :cascade do |t|
+    t.integer "record_id", null: false
+    t.integer "event_id", null: false
+    t.integer "user_id"
+    t.float "weight"
+    t.integer "rep"
+    t.integer "set"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
