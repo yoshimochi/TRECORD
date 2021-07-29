@@ -1,0 +1,9 @@
+<% @posts.each do |post| %>
+<div>
+  <%= post.user.name %>
+  <%= post.body %>
+  <%= attachment_image_tag post.user, :profile_image, format: 'jpeg', fallback: "no_image.png", size: "100x100"  %>
+  <%= link_to "#{post.post_comments.count}コメント", post_path(post.id) %>
+</div>
+<% end %>
+<%= paginate @posts %>
