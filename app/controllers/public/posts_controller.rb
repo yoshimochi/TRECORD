@@ -9,6 +9,10 @@ class Public::PostsController < ApplicationController
     @post.save
     redirect_to posts_path
   end
+  
+  def index
+    @posts = Post.page(params[:page]).per(20)
+  end
 
   private
   def post_params
