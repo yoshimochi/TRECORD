@@ -1,0 +1,25 @@
+<table>
+  <thead>
+    <tr>
+      <th>種目名</th>
+      <th>重量</th>
+      <th>回数</th>
+      <th>セット数</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @set_events.each do |set_event| %>
+    <tr>
+      <td><%= set_event.event.name %></td>
+      <td><%= set_event.weight %></td>
+      <td><%= set_event.rep %></td>
+      <td><%= set_event.set %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= form_with model: @record, local:true do |f| %>
+  <%= f.hidden_field :user_id %>
+  <%= f.submit '記録を確定する' %>
+<% end %>

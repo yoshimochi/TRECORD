@@ -1,0 +1,9 @@
+<ul>
+<% @records.each do |record| %>
+  <li>
+    <%= link_to record_path(record) do %>
+      <%= record.created_at.strftime('%m月%d日') %>のトレーニング
+    <% end %>
+  </li>
+<% end %>
+</ul>
