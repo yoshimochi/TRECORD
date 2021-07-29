@@ -1,0 +1,12 @@
+<table>
+<% @events.each do |event| %>
+ <tr>
+   <td>
+    <%= link_to event_path(event) do %>
+     <%= event.name %>
+    <% end %>
+    </td>
+ </tr>
+
+<% end %>
+</table>
