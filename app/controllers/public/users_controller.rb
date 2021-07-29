@@ -7,6 +7,7 @@ class Public::UsersController < ApplicationController
   end
 
   def show
+    @posts = @user.posts.page(params[:page]).per(10).order('updated_at DESC')
   end
 
   def edit

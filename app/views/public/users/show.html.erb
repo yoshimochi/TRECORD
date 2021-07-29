@@ -10,10 +10,10 @@
     <td><%= @user.name %>  </td>
   </tr>
   <tr>
-    <td><strong></strong> フォロー中</td>
+    <td><strong><%= @user.followings.count %></strong> フォロー中</td>
   </tr>
   <tr>
-    <td><strong></strong> フォロワー</td>
+    <td><strong><%= @user.followers.count %></strong> フォロワー</td>
   </tr>
 </table>
 
@@ -23,3 +23,28 @@
   </tr>
 </table>
 
+<%= link_to '投稿一覧', posts_path %>
+
+<% if logged_in? && current_user != @user %>
+  <% if current_user.following?(@user) %>
+    <%= button_to 'フォローをやめる', relationship_path(current_user.relationships.find_by(follower: @user)), method: :delete %>
+  <% else %>
+    <%= button_to 'フォローする', relationships_path(follower: @user) %>
+  <% end %>
+<% end %>
+
+
+
+<% if user_signed_in? && @user == current_user %>
+  <%= link_to "プロフィール編集", "/#{current_user.name}/edit" %>
+<% end %>
+
+<% @posts.each do |post| %>
+<div>
+  <%= post.body %>
+  <%= attachment_image_tag post.user, :profile_image, size: "100x100"  %>
+  <%= link_to "#{post.post_comments.count}コメント", post_path(post.id) %>
+</div>
+<% end %>
+
+<%= paginate @posts %>
