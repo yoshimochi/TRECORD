@@ -4,11 +4,13 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
   }
-  
+
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
-    
+
+    resources :posts
+
     resources :users
     get '/:username/unsubscribe' => 'users#unsubscribe'
     patch '/:username/widthdraw' => 'users#widthdraw', as: "users_widthdraw"
@@ -18,5 +20,5 @@ Rails.application.routes.draw do
     get '/:username/edit' => 'users#edit'
     patch '/:username' => 'users#update'
   end
-  
+
 end

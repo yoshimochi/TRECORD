@@ -1,0 +1,11 @@
+<%= form_with model: @post, local:true do |f| %>
+  <h4>投稿新規登録ページ</h4>
+
+  <%= f.attachment_field :image %>
+
+  <%= f.label '投稿内容' %>
+  <%= f.text_area :body %>
+
+  <%= f.submit '投稿する' %>
+
+<% end %>
