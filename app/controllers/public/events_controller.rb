@@ -1,5 +1,5 @@
 class Public::EventsController < ApplicationController
-
+  
   def index
     @events = Event.all.order(genre_id: "ASC")
   end
@@ -14,6 +14,11 @@ class Public::EventsController < ApplicationController
     redirect_to events_path
   end
 
+
+  def show
+    @event = Event.find(params[:id])
+    @set_event = SetEvent.new
+  end
 
   private
   def event_params
