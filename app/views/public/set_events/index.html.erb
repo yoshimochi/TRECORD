@@ -32,7 +32,7 @@
         <%= f.submit '変更' %>
       </td>
       <td>
-        <%= button_to '削除', set_event_path(set_event), method: :delete %>
+        <%= link_to '削除', set_event_path(set_event), method: :delete %>
       </td>
       <% end %>
     </tr>
@@ -40,3 +40,7 @@
   </tbody>
 </table>
 
+<ul>
+  <li><%= link_to '種目選択画面に戻る', events_path %></li>
+  <li><%= link_to 'トレーニングを終了する', new_record_path %></li>
+</ul>

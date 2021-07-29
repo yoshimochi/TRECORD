@@ -30,6 +30,12 @@ Rails.application.routes.draw do
         delete 'destroy_all'
       end
     end
+    
+    resources :records, only: [:index, :new, :create, :show, :destroy]
+    patch '/update_record' => 'records#update_record'
+    delete '/delete_record' => 'records#delete_record'
+    
+    resources :training_records
 
     resources :users
     get '/:username/unsubscribe' => 'users#unsubscribe'
