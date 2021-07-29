@@ -1,0 +1,9 @@
+<h4>種目登録画面</h4>
+
+<%= form_with model: [:admin, @event], local:true do |f| %>
+  <%= f.label 'カテゴリー' %>
+  <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: '-- 選択して下さい --' %>
+  <%= f.label '種目名' %>
+  <%= f.text_field :name %>
+  <%= f.submit '登録する' %>
+<% end %>
