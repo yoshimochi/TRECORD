@@ -1,0 +1,17 @@
+<%= form_with model: @user, url: "/#{@user.name}", local:true do |f| %>
+  <%= f.label 'プロフィール画像' %>
+  <%= attachment_image_tag @user, :profile_image, fallback: "no_image.png",size: "60x60" %>
+  <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %><br />
+
+  <%= f.label 'ユーザー名' %>
+  <%= f.text_field :name %><br />
+
+  <%= f.label 'メールアドレス' %>
+  <%= f.text_field :email %><br />
+
+  <%= f.label '自己紹介' %>
+  <%= f.text_area :introduction %><br />
+
+  <%= f.submit '変更を保存' %>
+  <%= link_to '退会する', "/#{current_user.name}/unsubscribe" %>
+<% end %>
