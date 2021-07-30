@@ -10,5 +10,6 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :set_events, dependent: :destroy
   has_many :records, dependent: :destroy
-
+  has_many :user_tags
+  has_many :tags, through: :user_tags
 end

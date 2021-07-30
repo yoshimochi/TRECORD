@@ -1,0 +1,5 @@
+<%= form_with model: [:admin, @tag], local:true do |f| %>
+  <%= f.label 'タグ名' %>
+  <%= f.text_field :name %>
+  <%= f.submit '変更する' %>
+<% end %>

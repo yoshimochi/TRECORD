@@ -4,6 +4,7 @@ class Public::UsersController < ApplicationController
 
   def mypage
     redirect_to "/#{current_user.name}"
+    @tags = @user.tags.find_by(id: @tag_id)
   end
 
   def show
@@ -42,6 +43,10 @@ class Public::UsersController < ApplicationController
   end
 
   def user_params
-    params.fetch(:user, {}).permit(:name, :profile_image, :introduction)
+    values = params.fetch(:user, {}).permit(:name, :profile_image, :introduction, tag_ids: [])
+    if values[:tag_ids].nil?
+      values[:tag_ids] = []
+    end
+    return values
   end
 end

@@ -1,0 +1,23 @@
+<h4>タグ一覧・追加</h4>
+
+<%= form_with model: @tag, url: admin_tags_path, local:true do |f| %>
+  <%= f.label 'タグ名' %>
+  <%= f.text_field :name %>
+  <%= f.submit '新規登録' %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <td></td>
+    </tr>
+  </thead>
+  <tdoby>
+  <% @tags.each do |tag| %>
+    <tr>
+      <th><%= tag.name %></th>
+      <th><%= link_to '編集', edit_admin_tag_path(tag.id) %></th>
+    </tr>
+  <% end %>
+  </tdoby>
+</table>

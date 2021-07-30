@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:show, :edit, :update, :destroy]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :events
+    resources :tags, only: [:index, :create, :edit, :update]
   end
 
   devise_for :users, path: "users", controllers: {
