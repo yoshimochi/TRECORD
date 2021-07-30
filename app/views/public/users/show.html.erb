@@ -7,7 +7,12 @@
 <table>
   <tr>
     <td rowspan="3"><%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.png", size: "100x100" %></td>
-    <td><%= @user.name %>  </td>
+    <td><%= @user.name %> </td>
+    <td>
+    <% @user.tags.each do |tag| %>
+      <%= tag.name %>
+    <% end %>
+    </td>
   </tr>
   <tr>
     <td><strong></strong> フォロー中</td>
