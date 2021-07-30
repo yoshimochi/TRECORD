@@ -1,0 +1,20 @@
+<%= form_with model: [:admin, @user], local:true do |f| %>
+  <%= f.label 'プロフィール画像' %>
+  <%= attachment_image_tag @user, :profile_image, fallback: "no_image.png",size: "60x60" %>
+  <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %><br />
+
+
+  <%= f.label 'ユーザー名' %>
+  <%= f.text_field :name %><br />
+
+  <%= f.label 'メールアドレス' %>
+  <%= f.text_field :email %><br />
+
+  <%= f.label 'ステータス' %>
+  <%= f.radio_button :is_active, :false %>
+  <%= f.label :is_active, "有効", value: :false, class: "form-check-label" %>
+  <%= f.radio_button :is_active, :true %>
+  <%= f.label :is_active, "退会", value: :true, class: "form-check-label" %>  <%= f.text_area :introduction %><br />
+
+  <%= f.submit '変更を保存' %>
+<% end %>
