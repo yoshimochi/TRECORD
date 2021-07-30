@@ -1,0 +1,28 @@
+<h4>会員一覧ページ</h4>
+
+<% @users.each do |user| %>
+<table>
+  <thead>
+    <tr>
+      <th>会員ID</th>
+      <th>ユーザー名</th>
+      <th>メールアドレス</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td>
+      <% if user.is_active == false %>
+        <p>有効</p>
+      <% elsif user.is_active == true %>
+        <p>退会</p>
+      <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<% end %>

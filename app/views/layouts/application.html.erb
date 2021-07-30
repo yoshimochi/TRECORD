@@ -20,10 +20,10 @@
       <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
 
     <% elsif admin_signed_in? %>
-      <li><%= link_to '会員一覧', admin_root_path %></li>
+      <li><%= link_to '会員一覧', admin_users_path %></li>
       <li><%= link_to '投稿一覧', admin_root_path %></li>
-      <li><%= link_to '種目一覧', admin_root_path %></li>
-      <li><%= link_to 'タグ一覧', admin_root_path %></li>
+      <li><%= link_to '種目一覧', admin_events_path %></li>
+      <li><%= link_to 'タグ一覧', admin_tags_path %></li>
       <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
 
     <% else %>

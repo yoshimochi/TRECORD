@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :events
     resources :tags, only: [:index, :create, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update]
   end
 
   devise_for :users, path: "users", controllers: {
