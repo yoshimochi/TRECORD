@@ -9,16 +9,16 @@
       <%= link_to_add_association '種目追加', f, :events,
         data: { association_insertion_method: 'append' } %>
     </div>
-    
+
     <div>
       <%= f.fields_for :events do |event| %>
         <%= render 'event_fields', f: event %>
       <% end %>
     </div>
-    
-    
+
+
     <div>
-      <%= f.submit 'トレーニングを終了する' %>
+      <%= f.submit 'トレーニングを終了する', id: "new_record" %>
     </div>
 
 <% end %>

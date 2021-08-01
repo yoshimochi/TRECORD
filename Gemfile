@@ -72,3 +72,4 @@ gem 'kaminari'
 gem 'jquery-rails'
 
 gem 'cocoon'
+gem 'safe_attributes'

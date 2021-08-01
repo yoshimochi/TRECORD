@@ -8,8 +8,8 @@ class Public::RecordsController < ApplicationController
   end
 
   def create
-    @record = Record.new
-    if @record.update(record_params)
+    @record = Record.new(record_params)
+    if @record.save
       redirect_to records_path
     else
       render :new
@@ -26,7 +26,7 @@ class Public::RecordsController < ApplicationController
 
   private
   def record_params
-      params.require(:record).permit(:comment, events_attributes: [:id, :name, :_destroy, set_events_attributes: [:id, :weight, :rep, :_destroy]]).merge(user_id: current_user.id)
+      params.require(:record).permit(:comment, :user_id, events_attributes: [:id, :name, :_destroy, set_events_attributes: [:id, :weight, :rep, :_destroy]]).merge(user_id: current_user.id)
   end
 
 end
