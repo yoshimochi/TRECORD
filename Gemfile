@@ -72,4 +72,5 @@ gem 'kaminari'
 gem 'jquery-rails'
 
 gem 'cocoon'
+gem 'nested_form'
 gem 'safe_attributes'

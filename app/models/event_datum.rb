@@ -1,0 +1,2 @@
+class EventDatum < ApplicationRecord
+end

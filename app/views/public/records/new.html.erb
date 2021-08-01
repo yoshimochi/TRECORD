@@ -1,5 +1,5 @@
 <h4>トレーニング記録</h4>
 
 <div class="new_record">
-  <%= render 'form', model: @record %>
+  <%= render 'form', path: records_path, method: :post, record: @record %>
 </div>

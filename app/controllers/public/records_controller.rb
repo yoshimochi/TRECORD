@@ -3,16 +3,18 @@ class Public::RecordsController < ApplicationController
 
   def new
     @record = Record.new
-    @event = @record.events.build
-    @set_event = @event.set_events.build
+    @event_data = @record.event_datum.build
+    @set_event = @event_data.set_events.build
   end
 
   def create
     @record = Record.new(record_params)
     if @record.save
       redirect_to records_path
+      flash[:notice] = "記録完了"
     else
       render :new
+      flash[:danger] = "失敗"
     end
   end
 
@@ -26,7 +28,7 @@ class Public::RecordsController < ApplicationController
 
   private
   def record_params
-      params.require(:record).permit(:comment, :user_id, events_attributes: [:id, :name, :_destroy, set_events_attributes: [:id, :weight, :rep, :_destroy]]).merge(user_id: current_user.id)
+      params.require(:record).permit(:comment, :user_id, events_attributes: [:name, :_destroy, set_events_attributes: [:weight, :rep, :_destroy]]).merge(user_id: current_user.id)
   end
 
 end

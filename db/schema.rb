@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_31_141920) do
+ActiveRecord::Schema.define(version: 2021_08_01_123155) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,18 +30,11 @@ ActiveRecord::Schema.define(version: 2021_07_31_141920) do
     t.string "rep"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "events", force: :cascade do |t|
-    t.integer "genre_id", null: false
-    t.text "name", null: false
-    t.float "weight"
-    t.integer "repetition"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "training_id"
     t.integer "record_id"
   end
+
+# Could not dump table "events" because of following StandardError
+#   Unknown type 'reference' for column 'record'
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -96,6 +89,7 @@ ActiveRecord::Schema.define(version: 2021_07_31_141920) do
     t.integer "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "event_data_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -104,16 +98,8 @@ ActiveRecord::Schema.define(version: 2021_07_31_141920) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "training_records", force: :cascade do |t|
-    t.integer "record_id", null: false
-    t.integer "event_id", null: false
-    t.integer "user_id"
-    t.float "weight"
-    t.integer "rep"
-    t.integer "set"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+# Could not dump table "training_records" because of following StandardError
+#   Unknown type '' for column 'event'
 
   create_table "trainings", force: :cascade do |t|
     t.text "comment"

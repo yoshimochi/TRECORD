@@ -4,9 +4,10 @@
     <%= f.collection_select :name, Event.all, :name, :name, prompt: '種目を選択' %>
   </div>
 </div>
-
+<%= link_to_remove_association '削除', f %>
 <div class="nested-fields">
-  <%= link_to_add_association 'セットを追加', f, :set_events %>
+  <%= link_to_add_association 'セットを追加', f, :set_events,
+    data: { association_insertion_method: 'append' } %>
 </div>
 
 <div class="set_event">

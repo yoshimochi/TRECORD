@@ -14,5 +14,6 @@
 //= require activestorage
 //= require jquery
 //= require cocoon
+//= require jquery_nested_form
 //= require turbolinks
 //= require_tree .
