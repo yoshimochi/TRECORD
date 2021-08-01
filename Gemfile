@@ -70,3 +70,5 @@ gem 'dotenv-rails'
 
 gem 'kaminari'
 gem 'jquery-rails'
+
+gem 'cocoon'

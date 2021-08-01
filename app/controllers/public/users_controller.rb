@@ -4,10 +4,10 @@ class Public::UsersController < ApplicationController
 
   def mypage
     redirect_to "/#{current_user.name}"
-    @tags = @user.tags.find_by(id: @tag_id)
   end
 
   def show
+    @tags = @user.tags.find_by(id: @tag_id)
   end
 
   def edit

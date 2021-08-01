@@ -35,7 +35,9 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :records, only: [:index, :new, :create, :show, :destroy]
+    resources :records, only: [:index, :new, :create, :show, :destroy] do
+      resources :events
+    end
     patch '/update_record' => 'records#update_record'
     delete '/delete_record' => 'records#delete_record'
 

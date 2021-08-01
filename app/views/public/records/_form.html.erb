@@ -1,0 +1,25 @@
+<div class="new_record">
+<%= form_with model: @record, local:true do |f| %>
+    <div>
+      <%= f.label 'コメント' %>
+      <%= f.text_field :comment, placeholder: '今日はどんなトレーニングをしましたか？' %>
+    </div>
+
+    <div>
+      <%= link_to_add_association '種目追加', f, :events,
+        data: { association_insertion_method: 'append' } %>
+    </div>
+    
+    <div>
+      <%= f.fields_for :events do |event| %>
+        <%= render 'event_fields', f: event %>
+      <% end %>
+    </div>
+    
+    
+    <div>
+      <%= f.submit 'トレーニングを終了する' %>
+    </div>
+
+<% end %>
+</div>

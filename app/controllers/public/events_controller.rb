@@ -1,5 +1,5 @@
 class Public::EventsController < ApplicationController
-  
+
   def index
     @events = Event.all.order(genre_id: "ASC")
   end

@@ -1,0 +1,14 @@
+<%= f.hidden_field :id %>
+<table>
+  <tr>
+    <th>重量</th>
+    <td><%= f.number_field :weight, placeholder: "Kg", "step" => "0.5" %>　Kg</td>
+  </tr>
+  <tr>
+    <th>回数</th>
+    <td><%= f.number_field :rep, placeholder: "(例)8", "pattern"=>"\\d*" %> 回</td>
+  </tr>
+  <tr>
+    <th><%= link_to_remove_association '削除', f %></th>
+  </tr>
+</table>

@@ -1,0 +1,16 @@
+<div class="event">
+  <%= f.hidden_field :id %>
+  <div>
+    <%= f.collection_select :name, Event.all, :name, :name, prompt: '種目を選択' %>
+  </div>
+</div>
+
+<div class="nested-fields">
+  <%= link_to_add_association 'セットを追加', f, :set_events %>
+</div>
+
+<div class="set_event">
+  <%= f.fields_for :set_events do |set_event| %>
+    <%= render 'set_event_fields', f: set_event %>
+  <% end %>
+</div>
