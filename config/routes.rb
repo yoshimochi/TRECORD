@@ -40,11 +40,14 @@ Rails.application.routes.draw do
     patch '/update_record' => 'records#update_record'
     delete '/delete_record' => 'records#delete_record'
 
-    resources :training_records
-
-    resources :users
+    resources :users do
+      get 'following' => 'users#following', as: 'following'
+      get 'follower' => 'users#follower', as: 'follower'
+    end
     get '/:username/unsubscribe' => 'users#unsubscribe'
     patch '/:username/widthdraw' => 'users#widthdraw', as: "users_widthdraw"
+    resources :relationships, only: [:create, :destroy]
+
   # 以下のルーティングは常に一番下に
     get '/mypage' => 'users#mypage'
     get '/:username' => 'users#show'

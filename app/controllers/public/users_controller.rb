@@ -4,10 +4,11 @@ class Public::UsersController < ApplicationController
 
   def mypage
     redirect_to "/#{current_user.name}"
-    @tags = @user.tags.find_by(id: @tag_id)
   end
 
   def show
+    @posts = @user.posts.page(params[:page]).per(10).order('updated_at DESC')
+    @tags = @user.tags.find_by(id: @tag_id)
   end
 
   def edit
@@ -23,6 +24,16 @@ class Public::UsersController < ApplicationController
     else
       redirect_to "/#{current_user.name}/edit"
     end
+  end
+
+  def following
+    @user = User.find(params[:user_id])
+    @users = user.followings
+  end
+
+  def follower
+    @user = User.find(params[:user_id])
+    @users = user.followers
   end
 
   def unsubscribe
