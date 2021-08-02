@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_29_164226) do
+ActiveRecord::Schema.define(version: 2021_08_02_052200) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -33,8 +33,15 @@ ActiveRecord::Schema.define(version: 2021_07_29_164226) do
     t.integer "record_id"
   end
 
+  create_table "eventdata", force: :cascade do |t|
+    t.integer "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "record_id"
+  end
+
 # Could not dump table "events" because of following StandardError
-#   Unknown type 'reference' for column 'record'
+#   Unknown type '' for column 'record'
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -86,10 +93,10 @@ ActiveRecord::Schema.define(version: 2021_07_29_164226) do
     t.float "weight", default: 0.0
     t.integer "rep", default: 0
     t.integer "set", default: 0
-    t.integer "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "event_data_id"
+    t.integer "training_record_id"
+    t.string "max"
   end
 
   create_table "tags", force: :cascade do |t|
