@@ -37,4 +37,8 @@ class User < ApplicationRecord
     relationships.find(relathinoship_id).destroy!
   end
 
+  def active_for_authentication?
+    super && (is_active == false)
+  end
+
 end
