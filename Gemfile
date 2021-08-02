@@ -62,6 +62,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+gem 'pry-rails'
+gem 'safe_attributes'
 
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
@@ -70,3 +72,4 @@ gem 'dotenv-rails'
 
 gem 'kaminari'
 gem 'jquery-rails'
+gem 'cocoon'

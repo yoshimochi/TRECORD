@@ -1,20 +1,23 @@
 <table>
+<% @record.training_records.each do |training_record| %>
     <thead>
         <tr>
-            <th>種目名</th>
-            <th>重量</th>
-            <th>回数</th>
-            <th>セット</th>
+           <th><%= training_record.name %></th>
         </tr>
     </thead>
-<% @training_records.each do |training_record| %>
     <tbody>
         <tr>
-            <td><%= training_record.event.name %></td>
-            <td><%= training_record.weight %></td>
-            <td><%= training_record.rep %></td>
-            <td><%= training_record.set %></td>
+            <th>重量</th>
+            <th>回数</th>
+            <th>RM</th>
         </tr>
+        <tr>
+        <% training_record.set_events.each do |set_event| %>
+            <td><%= set_event.weight %></td>
+            <td><%= set_event.rep %></td>
+            <td><%= ((set_event.weight * set_event.rep / 40 ) + set_event.weight) %></td>
+        </tr>
+        <% end %>
     </tbody>
 <% end %>
 </table>

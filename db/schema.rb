@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_29_164226) do
+ActiveRecord::Schema.define(version: 2021_08_02_052200) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,14 +24,24 @@ ActiveRecord::Schema.define(version: 2021_07_29_164226) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "events", force: :cascade do |t|
-    t.integer "genre_id", null: false
-    t.text "name", null: false
+  create_table "event_data", force: :cascade do |t|
+    t.integer "event_id"
     t.float "weight"
-    t.integer "repetition"
+    t.string "rep"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "record_id"
   end
+
+  create_table "eventdata", force: :cascade do |t|
+    t.integer "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "record_id"
+  end
+
+# Could not dump table "events" because of following StandardError
+#   Unknown type '' for column 'record'
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -66,6 +76,7 @@ ActiveRecord::Schema.define(version: 2021_07_29_164226) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "comment"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -82,11 +93,10 @@ ActiveRecord::Schema.define(version: 2021_07_29_164226) do
     t.float "weight", default: 0.0
     t.integer "rep", default: 0
     t.integer "set", default: 0
-    t.integer "event_id"
-    t.integer "user_id"
-    t.integer "record_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "training_record_id"
+    t.string "max"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -95,15 +105,16 @@ ActiveRecord::Schema.define(version: 2021_07_29_164226) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "training_records", force: :cascade do |t|
-    t.integer "record_id", null: false
-    t.integer "event_id", null: false
+# Could not dump table "training_records" because of following StandardError
+#   Unknown type '' for column 'event'
+
+  create_table "trainings", force: :cascade do |t|
+    t.text "comment"
     t.integer "user_id"
-    t.float "weight"
-    t.integer "rep"
-    t.integer "set"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "event_id"
+    t.integer "record_id"
   end
 
   create_table "user_tags", force: :cascade do |t|
