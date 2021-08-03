@@ -13,7 +13,19 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap";
 
-.fa-twitter-square {
-  color: #1da1f2;
-}
+.form-signin {
+    width: 100%;
+    max-width: 420px;
+    padding: 15px;
+    margin: auto;
+  }
+
+.card {
+    width: 100%;
+    max-width: 420px;
+    padding: 15px;
+    margin: 30px auto;
+    background-color: #fff;
+  }
