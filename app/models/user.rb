@@ -2,7 +2,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: [:twitter]
 
   attachment :profile_image
   has_many :posts, dependent: :destroy
@@ -41,4 +42,22 @@ class User < ApplicationRecord
     super && (is_active == false)
   end
 
+  # twitter_api 
+  def self.find_for_oauth(auth)
+    user = User.find_by(uid: auth.uid, provider: auth.provider)
+  
+    user ||= User.create!(
+      uid: auth.uid,
+      provider: auth.provider,
+      name: auth[:info][:name],
+      email: User.dummy_email(auth),
+      password: Devise.friendly_token[0, 20]
+    )
+    user
+  end
+
+  def self.dummy_email(auth)
+    "#{Time.now.strftime('%Y%m%d%H%M%S').to_i}-#{auth.uid}-#{auth.provider}@example.com"
+end
+  
 end

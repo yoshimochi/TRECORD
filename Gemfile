@@ -70,6 +70,10 @@ gem "refile-mini_magick"
 
 gem 'dotenv-rails'
 
+# twitter_api
+gem 'omniauth'
+gem 'omniauth-twitter'
+
 gem 'kaminari'
 gem 'jquery-rails'
 gem 'cocoon'
