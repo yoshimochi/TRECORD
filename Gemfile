@@ -73,3 +73,6 @@ gem 'dotenv-rails'
 gem 'kaminari'
 gem 'jquery-rails'
 gem 'cocoon'
+
+gem 'simple_calendar'
+gem 'rails-i18n', '~> 5.1'

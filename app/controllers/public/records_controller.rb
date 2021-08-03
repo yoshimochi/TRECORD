@@ -1,12 +1,12 @@
 class Public::RecordsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def new
     @record = Record.new
     @training_record = @record.training_records.build
     @set_event = @training_record.set_events.build
   end
-  
+
   def create
     @record = Record.new(record_params)
     if @record.save
@@ -17,18 +17,23 @@ class Public::RecordsController < ApplicationController
       flash[:danger] = "記録に失敗しました"
     end
   end
-  
+
   def index
     @records = Record.all
   end
-  
+
   def show
     @record = Record.find(params[:id])
   end
-  
+
+  def destroy
+    @record = Record.find(params[:id])
+    @record.destroy
+    redirect_to records_path
+  end
+
   private
   def record_params
-    params.require(:record).permit(:comment, training_records_attributes: [:id, :name, :_destroy, set_events_attributes: [:id, :weight, :rep, :_destroy]]).merge(user_id: current_user.id)
+    params.require(:record).permit(:comment, :start_time, training_records_attributes: [:id, :name, :_destroy, set_events_attributes: [:id, :weight, :rep, :_destroy]]).merge(user_id: current_user.id)
   end
 end
-

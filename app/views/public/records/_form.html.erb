@@ -16,7 +16,7 @@
           <%= f.label :"記録タイトル ※必須" %>
           <%= f.text_field :comment, placeholder: "どんなトレーニングをしましたか？",class: "form-control" %>
         </div>
-        
+
       <div class="d-flex justify-content-between">
       <%= link_to_add_association 'メニュー追加', f, :training_records,
         class: 'btn btn-success  ml-1 p-1',
@@ -25,13 +25,20 @@
           association_insertion_method: 'append' }
       %>
       </div>
-      
+
       <div class="form-group" id='detail-association-insertion-point'>
         <%= f.fields_for :training_records do |training_record| %>
           <%= render 'training_record_fields', f: training_record %>
-          
+
         <% end %>
       </div>
+      <div class="Date_form">
+        <div class="field mr-5">
+          <%= f.label :"開始日" %>
+          <%= f.datetime_select :start_time %>
+        </div>
+      </div>
+
     <div class="input">
       <%= f.submit "トレーニングを保存" , id: "new-record", class: "btn btn-success"%>
     </div>

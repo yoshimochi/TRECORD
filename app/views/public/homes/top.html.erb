@@ -1,1 +1,6 @@
-<h2>トレーニングを追加</h2>
+<%= month_calendar(events: @records) do |date, records| %>
+  <%= date.day %>
+
+<% end %>
+
+<%= link_to 'トレーニングを記録する', new_record_path %>
