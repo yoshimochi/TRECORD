@@ -23,9 +23,28 @@
   }
 
 .card {
-    width: 100%;
-    max-width: 420px;
-    padding: 15px;
-    margin: 30px auto;
-    background-color: #fff;
+    min-width: 220px;
+    max-width: 400px;
+    margin-bottom: 10px !important;
+    margin: auto;
   }
+
+.card-new-comment  {
+   max-width: 400px;
+   margin: auto;
+  }
+
+  .post_comment {
+   max-width: 400px;
+   margin: auto;
+  }
+
+  .edit-post {
+    border: none;
+  }
+
+
+.btn {
+    margin: 20 0 0 auto;
+
+}
