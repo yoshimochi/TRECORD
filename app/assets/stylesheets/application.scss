@@ -13,7 +13,38 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap";
 
-.fa-twitter-square {
-  color: #1da1f2;
+.form-signin {
+    width: 100%;
+    max-width: 420px;
+    padding: 15px;
+    margin: auto;
+  }
+
+.card {
+    min-width: 220px;
+    max-width: 400px;
+    margin-bottom: 10px !important;
+    margin: auto;
+  }
+
+.card-new-comment  {
+   max-width: 400px;
+   margin: auto;
+  }
+
+  .post_comment {
+   max-width: 400px;
+   margin: auto;
+  }
+
+  .edit-post {
+    border: none;
+  }
+
+
+.btn {
+    margin: 20 0 0 auto;
+
 }

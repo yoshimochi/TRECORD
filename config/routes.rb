@@ -16,16 +16,16 @@ Rails.application.routes.draw do
     sessions:      'users/sessions',
     passwords:     'users/passwords',
     registrations: 'users/registrations',
-    omniauth_callbacks: 'users/omniauth_callbacks' 
+    # omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
 
-    resources :posts do
-      resources :favorites, only: [:create, :destroy]
+    resources :posts, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
       resources :post_comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
     end
 
     resources :genres, only: [:index, :show]
