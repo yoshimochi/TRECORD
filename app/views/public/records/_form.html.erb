@@ -1,4 +1,5 @@
-<div class="new-record＿Box">
+<div class="container new-record＿Box">
+  <div class="row">
   <%= form_with(model: record, local: true) do |f| %>
     <% if record.errors.any? %>
           <div id="error_explanation">
@@ -12,28 +13,28 @@
           </div>
         <% end %>
 
-        <div class="field">
+        <div class="col">
           <%= f.label :"記録タイトル ※必須" %>
           <%= f.text_field :comment, placeholder: "どんなトレーニングをしましたか？",class: "form-control" %>
         </div>
-        
-      <div class="d-flex justify-content-between">
+
+      <div>
       <%= link_to_add_association 'メニュー追加', f, :training_records,
-        class: 'btn btn-success  ml-1 p-1',
+        class: 'btn btn-success mt-3  ml-3 p-1 ',
         data: {
           association_insertion_node: '#detail-association-insertion-point',
           association_insertion_method: 'append' }
       %>
       </div>
-      
+
       <div class="form-group" id='detail-association-insertion-point'>
         <%= f.fields_for :training_records do |training_record| %>
           <%= render 'training_record_fields', f: training_record %>
-          
         <% end %>
       </div>
     <div class="input">
-      <%= f.submit "トレーニングを保存" , id: "new-record", class: "btn btn-success"%>
+      <%= f.submit "トレーニングを保存" , id: "new-record", class: "btn btn-success ml-3"%>
     </div>
   <% end %>
+  </div>
 </div>

@@ -24,7 +24,7 @@
 
 .card {
     min-width: 220px;
-    max-width: 400px;
+    max-width: 600px;
     margin-bottom: 10px !important;
     margin: auto;
   }
@@ -59,8 +59,11 @@
 }
 
 body {
-    background: #654ea3;
-    background: linear-gradient(to right, #e96443, #904e95);
     min-height: 100vh;
     overflow-x: hidden
+}
+
+.records-table {
+    text-align: center;
+    border-bottmo: solid 1px black;
 }

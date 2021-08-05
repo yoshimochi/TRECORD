@@ -1,26 +1,3 @@
-<%= form_with model: @set_event, url: set_events_path, local:true do |f| %>
-<table>
- <thead>
-    <tr>
-      <td colspan="3"><%= @event.name %></td>
-    </tr>
-    <tr>
-      <td>重量(Kg)</td>
-      <td>回数(回)</td>
-      <td>セット数</td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= f.number_field :weight, placeholder: "Kg", "step" => "0.5" %>　Kg</td>
-      <td><%= f.number_field :rep, placeholder: "(例)8", "pattern"=>"\\d*" %> 回</td>
-      <td><%= f.number_field :set, placeholder: "(例)3", "pattern"=>"\\d*" %></td>
-    </tr>
-    <tr>
-     <td><%= f.submit '終了' %></td>
-    </tr>
-  </tbody>
-  <%= f.hidden_field :event_id, value: @event.id %>
-
-</table>
+<% @genre.events.each do |event| %>
+  <%= @genre.event.name %>
 <% end %>
