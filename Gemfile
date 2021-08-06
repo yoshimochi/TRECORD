@@ -76,3 +76,6 @@ gem 'jquery-rails'
 gem 'bootstrap', '~> 4.1.1'
 
 gem 'cocoon'
+
+gem 'simple_calendar', '~>2.0'
+gem 'rails-i18n', '~> 5.1'
