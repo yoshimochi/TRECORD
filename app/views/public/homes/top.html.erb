@@ -1,1 +1,21 @@
-<h2>トレーニングを追加</h2>
+
+<div class= 'calender'>
+  <% if user_signed_in? %>
+    <%= month_calendar events: @records do |date, records| %>
+        <%= date.day %>
+        <% records.each do |record| %>
+          <%= link_to record_path(record) do %>
+            <%= record.comment %>
+          <% end %>
+        <% end %>
+    <% end %>
+  <% else %>
+    <%= month_calendar do |date| %>
+        <%= date.day %>
+      <% end %>
+  <% end %>
+</div>
+
+<div class="text-center mt-3 mb-5">
+  <%= link_to 'トレーニングを追加', new_record_path, class: "btn btn-primary btn-lg btn-block" %>
+</div>

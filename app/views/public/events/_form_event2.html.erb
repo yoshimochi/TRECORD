@@ -1,0 +1,8 @@
+
+<% @event2.each do |event| %>
+ <li class="list-group-item">
+    <%= link_to event_path(event) do %>
+     <%= event.name %>
+    <% end %>
+ </li>
+<% end %>

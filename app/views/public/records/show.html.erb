@@ -1,24 +1,29 @@
-<table>
+<%= link_to '一覧に戻る', records_path %>
+
 <% @record.training_records.each do |training_record| %>
-    <thead>
-        <tr>
-           <th><%= training_record.name %></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th>重量</th>
-            <th>回数</th>
-            <th>RM</th>
-        </tr>
-        <tr>
-        <% training_record.set_events.each do |set_event| %>
-            <td><%= set_event.weight %></td>
-            <td><%= set_event.rep %></td>
-            <td><%= ((set_event.weight * set_event.rep / 40 ) + set_event.weight) %></td>
-        </tr>
-        <% end %>
-    </tbody>
+<div class="card">
+    <table class="records-table table table-striped">
+        <thead class="bg-success">
+            <tr>
+               <th colspan="4">
+                   <%= training_record.name %> <%= link_to '削除', record_path(@record), method: :delete, class: "btn btn-danger btn-sm ml-3" %>
+               </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="col">重量</th>
+                <th scope="col">回数</th>
+                <th scope="col">RM</th>
+            </tr>
+            <tr>
+            <% training_record.set_events.each do |set_event| %>
+                <td><%= set_event.weight %> Kg</td>
+                <td><%= set_event.rep %> 回</td>
+                <td><%= ( (set_event.weight * set_event.rep / 40 ) + set_event.weight) %> Kg</td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
 <% end %>
-</table>
-<%= button_to '削除', record_path(@record), method: :delete %>

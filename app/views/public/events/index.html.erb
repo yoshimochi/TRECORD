@@ -1,12 +1,39 @@
-<table>
-<% @events.each do |event| %>
- <tr>
-   <td>
-    <%= link_to event_path(event) do %>
-     <%= event.name %>
-    <% end %>
-    </td>
- </tr>
+<h2>種目一覧</h2>
 
-<% end %>
-</table>
+<div class="card">
+ <div id="event_lists">
+  <div class="card-header">上半身</div>
+  <ul class="list-group list-group-flush">
+   <%= render 'form_event1' %>
+    <div class="more">
+     <%= link_to_next_page @event1, 'もっと見る', remote: true, id: 'view_more' %>
+    </div>
+  </ul>
+ </div>
+</div>
+
+
+<div class="card">
+ <div id="event_lists">
+  <div class="card-header">下半身</div>
+  <ul class="list-group list-group-flush">
+   <%= render 'form_event2' %>
+  </ul>
+ </div>
+ <div class="more">
+  <%= link_to_next_page @event2, 'もっと見る', remote: true, id: 'view_more' %>
+ </div>
+</div>
+
+
+<div class="card">
+ <div id="event_lists">
+  <div class="card-header">体幹</div>
+  <ul class="list-group list-group-flush">
+   <%= render 'form_event3' %>
+  </ul>
+ </div>
+ <div class="more">
+  <%= link_to_next_page @event3, 'もっと見る', remote: true, id: 'view_more' %>
+ </div>
+</div>

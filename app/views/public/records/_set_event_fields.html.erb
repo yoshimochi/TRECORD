@@ -1,7 +1,6 @@
-<div class="nested-fields">
+<div class="nested-fields mb-3">
   <%= f.hidden_field :id %>
-  <%= f.number_field :weight, placeholder: "Kg", "step" => "0.5" %>　Kg
-  <%= f.number_field :rep, placeholder: "(例)8", "pattern"=>"\\d*" %> 回
-  
-  <%= link_to_remove_association '削除', f, class: 'btn btn-outline-secondary btn-sm p-0' %>
+  <%= f.number_field :weight, placeholder: "Kg", "step" => "0.5" %>　Kg&nbsp;
+  <%= f.number_field :rep, placeholder: "(例)8", "pattern"=>"\\d*" %> 回&nbsp;
+  <%= link_to_remove_association '削除', f, class: 'btn btn-danger btn-sm p-0' %>
 </div>
