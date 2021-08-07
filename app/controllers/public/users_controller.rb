@@ -7,7 +7,7 @@ class Public::UsersController < ApplicationController
   end
 
   def show
-    @posts = @user.posts.page(params[:page]).per(10).order('updated_at DESC')
+    # @posts = @user.posts.page(params[:page]).per(10).order('updated_at DESC')
     @tags = @user.tags.find_by(id: @tag_id)
   end
 

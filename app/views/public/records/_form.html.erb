@@ -14,8 +14,13 @@
         <% end %>
 
         <div class="col">
-          <%= f.label :"記録タイトル ※必須" %>
+          <%= f.label "記録タイトル ※必須" %>
           <%= f.text_field :comment, placeholder: "どんなトレーニングをしましたか？",class: "form-control" %>
+        </div>
+
+        <div class="col">
+          <%= f.label '日付 ※必須' %>
+          <%= f.datetime_select :start_time, {discard_year: true, discard_hour: true, discard_minute: true} %>
         </div>
 
       <div>

@@ -1,20 +1,11 @@
-<div class="container">
-  <div class="row">
-    <% @posts.each do |post| %>
-    <div class="col-lg-3 col-md-4 col-sm-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title"><%= post.user.name %></h5>
-            <p class="card-text"><%= post.body %></p>
-          </div>
-          <%= attachment_image_tag post.user, :profile_image, format: 'jpeg', size: "100x100", class: "card-img-top"  %>
-          <div class="card-body">
-            ♥<%= post.favorites.count %> いいね
-            <%= link_to "#{post.post_comments.count}コメント", post_path(post.id) %>
-          </div>
+  <div class="container">
+    <div class="row">
+      <div class="jscroll">
+        <%= render 'posts' %>
+        <div class="skill-list">
+          <%= link_to_prev_page @posts, '前のページ', class: "prev" %>
+          <%= link_to_next_page @posts, '次のページ', class: "next" %>
         </div>
+      </div>
     </div>
-    <% end %>
   </div>
-</div>
-<%= paginate @posts %>
