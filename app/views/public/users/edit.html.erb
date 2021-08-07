@@ -1,29 +1,43 @@
 <%= form_with model: @user, url: "/#{@user.name}", local:true do |f| %>
-  <%= f.label 'プロフィール画像' %>
-  <%= attachment_image_tag @user, :profile_image, fallback: "no_image.png",size: "60x60" %>
-  <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %><br />
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label 'プロフィール画像', class: "exampleFormControlFile1" %>
+        <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "form-control-file" %>
+      </div>
 
-  <div>
-    <%= f.label :tag_ids, "タグ機能" %>
-    <span>
-      <% Tag.all.each do |tag| %>
-        <%= f.check_box :tag_ids, { multiple: true, checked: @user.tags.find_by(id: tag.id).present?, include_hidden: false } ,tag[:id] %>
-        <label class="form^check-label">
-          <%= tag.name %>
-        </label> 
-      <% end %>  
-    </span>
+        <div>
+          <%= f.label :tag_ids, "タグ機能" %>
+          <span>
+            <% Tag.all.each do |tag| %>
+              <%= f.check_box :tag_ids, { multiple: true, checked: @user.tags.find_by(id: tag.id).present?, include_hidden: false } ,tag[:id] %>
+              <label class="form^check-label">
+                <%= tag.name %>
+              </label>
+            <% end %>
+          </span>
+        </div>
+
+      <div class="form-group">
+        <%= f.label 'ユーザー名' %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label 'メールアドレス' %>
+        <%= f.text_field :email, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label '自己紹介' %>
+        <%= f.text_area :introduction, class: "form-control" %>
+      </div>
+
+        <%= f.submit '変更を保存', class: "btn btn-success mb-2" %>
+        <%= link_to '退会する', "/#{current_user.name}/unsubscribe", class: "btn btn-danger mb-2" %>
+
+    </div>
   </div>
-  
-  <%= f.label 'ユーザー名' %>
-  <%= f.text_field :name %><br />
-
-  <%= f.label 'メールアドレス' %>
-  <%= f.text_field :email %><br />
-
-  <%= f.label '自己紹介' %>
-  <%= f.text_area :introduction %><br />
-
-  <%= f.submit '変更を保存' %>
-  <%= link_to '退会する', "/#{current_user.name}/unsubscribe" %>
+</div>
 <% end %>

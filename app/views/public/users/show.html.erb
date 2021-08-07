@@ -12,7 +12,7 @@
         <div class="bg-white shadow rounded overflow-hidden">
             <div class="px-4 pt-0 pb-4 cover">
                 <div class="media align-items-end profile-head">
-                    <div class="profile mr-3"><img src="images/no_image.png" alt="..." width="130" class="rounded mb-2 img-thumbnail">
+                    <div class="profile mr-3"><img src="images/no_image.jpg" alt="..." width="130" class="rounded mb-2 img-thumbnail">
                       <% if user_signed_in? && @user == current_user %>
                         <%= link_to "プロフィール編集", "/#{current_user.name}/edit", class: "btn btn-outline-dark btn-sm btn-block" %>
                       <% end %>
@@ -53,11 +53,9 @@
                 </ul>
             </div>
             <div class="px-4 py-3">
-                <h5 class="mb-0">About</h5>
+                <h5 class="mb-0"></h5>
                 <div class="p-4 rounded shadow-sm bg-light">
                     <p class="font-italic mb-0"><%= @user.introduction %></p>
-                    <p class="font-italic mb-0">Lives in New York</p>
-                    <p class="font-italic mb-0">Photographer</p>
                 </div>
             </div>
         </div>
