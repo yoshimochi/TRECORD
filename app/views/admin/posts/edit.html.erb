@@ -1,16 +1,19 @@
-<h4>投稿編集画面</h4>
+<div class="container mt-5 mb-5">
+  <h4>投稿編集ページ</h4>
+</div>
 
-<%= form_with model: [:admin, @post], local:true do |f| %>
-  <div>
-    <%= f.label '投稿内容' %>
+
+<div class="container mt-10">
+  <%= form_with model: [:admin, @post], local:true do |f| %>
+  <div class="edit-post card">
+    <div class="form-group">
+      <%= f.label '投稿内容', class: "exampleFormControlTextarea1" %>
+      <%= f.text_area :body, class: "form-control" %>
+    </div>
   </div>
-  <div>
-    <%= f.text_area :body %>
-  </div>
-  <div>
-    <%= f.submit '変更を保存' %>
-  </div>
-  <div>
-    <%= link_to '削除する', admin_post_path(@post), method: :delete %>
-  </div>
-<% end %>
+    <div class="text-center">
+      <%= f.submit '変更を保存', class: "btn btn-success mr-3" %>
+      <%= link_to '削除する', post_path(@post), method: :delet, class: "btn btn-danger" %>
+    </div>
+  <% end %>
+</div>

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :posts, only: [:show, :edit, :update, :destroy]
     resources :genres, only: [:index, :create, :edit, :update]
-    resources :events
+    resources :events, only: [:new, :create, :index, :edit, :update, :destroy]
     resources :tags, only: [:index, :create, :edit, :update]
     resources :users, only: [:index, :show, :edit, :update]
   end
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     end
 
     resources :genres, only: [:index, :show]
-    resources :events, only: [:new, :create, :index, :show]
+    resources :events, only: [:new, :create, :index]
 
     resources :set_events, only:[:index, :update, :destroy, :create] do
       collection do

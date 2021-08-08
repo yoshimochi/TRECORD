@@ -9,6 +9,8 @@ class Public::UsersController < ApplicationController
   def show
     # @posts = @user.posts.page(params[:page]).per(10).order('updated_at DESC')
     @tags = @user.tags.find_by(id: @tag_id)
+    @records = @user.records.find_by(id: @record_id)
+    @training_records = Record.where(params[:training_record])
   end
 
   def edit

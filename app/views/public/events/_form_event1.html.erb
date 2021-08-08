@@ -1,7 +1,11 @@
 <% @event1.each do |event| %>
  <li class="list-group-item">
-    <%= link_to event_path(event) do %>
+  <% if user_signed_in? %>
+     <%= event.name %>
+  <% else %>
+    <%= link_to edit_admin_event_path(event.id) do %>
      <%= event.name %>
     <% end %>
+  <% end %>
  </li>
 <% end %>

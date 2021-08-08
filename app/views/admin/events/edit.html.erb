@@ -1,18 +1,24 @@
 <h4>種目編集ページ</h4>
 
 <%= form_with model: [:admin, @event], local:true do |f| %>
-<table>
-  <tr>
-    <th><%= f.label 'カテゴリー' %></th>
-    <td>  <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: '-- 選択して下さい --' %></td>
-  </tr>
-  <tr>
-    <th><%= f.label '種目名' %></th>
-    <td><%= f.text_field :name %></td>
-  </tr>
-  <tr>
-    <th><%= f.submit '変更を保存' %></th>
-    <th><%= link_to '削除する', admin_event_path(@event), method: :delete %></th>
-  </tr>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="edit-user col-md-6">
+      <div class="form-group">
+        <%= f.label 'カテゴリー' %><br />
+        <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: '-- 選択して下さい --', class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label '種目名' %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+
+      <div class="form-group mt-">
+        <%= f.submit '変更を保存', class: "btn btn-success" %>
+        <%= link_to '削除する', admin_event_path(@event), method: :delete, class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>
+</div>
 <% end %>

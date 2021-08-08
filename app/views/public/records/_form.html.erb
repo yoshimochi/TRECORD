@@ -22,6 +22,13 @@
           <%= f.label '日付 ※必須' %>
           <%= f.datetime_select :start_time, {discard_year: true, discard_hour: true, discard_minute: true} %>
         </div>
+        
+        <div class="col">
+          <%= f.label :rate, '評価' %>
+          <%= f.hidden_field :rate, id: :review_star %>
+        </div>
+        
+        
 
       <div>
       <%= link_to_add_association 'メニュー追加', f, :training_records,
