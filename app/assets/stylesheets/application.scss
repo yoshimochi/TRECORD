@@ -83,3 +83,28 @@ nav.pagination {
 .scroll-list {
   padding: 0;
 }
+
+table .post-comments {
+  table-layout: fixed;
+}
+
+table .user-name {
+  width: 8em;
+}
+
+table .post-delete {
+  width: 5em;
+  text-align: center;
+}
+
+.admin-users {
+  margin: 0 auto;
+}
+
+.edit-user {
+  margin: 0 auto;
+}
+
+.btn {
+    width: 10em;
+}

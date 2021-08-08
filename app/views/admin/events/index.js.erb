@@ -1,0 +1,11 @@
+$('#event_lists').append("<%= escape_javascript(render 'public/events/form_event1', object: @event1) %>");
+$("#view_more").replaceWith("<%= escape_javascript(
+link_to_next_page(@event1, 'もっと見る', remote: true, id: 'view_more')) %>");
+
+$('#event_lists').append("<%= escape_javascript(render 'public/events/form_event2', object: @event2) %>");
+$("#view_more").replaceWith("<%= escape_javascript(
+link_to_next_page(@event2, 'もっと見る', remote: true, id: 'view_more')) %>");
+
+$('#event_lists').append("<%= escape_javascript(render 'public/events/form_event3', object: @event3) %>");
+$("#view_more").replaceWith("<%= escape_javascript(
+link_to_next_page(@event3, 'もっと見る', remote: true, id: 'view_more')) %>");

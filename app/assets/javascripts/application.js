@@ -19,6 +19,7 @@
 //= require turbolinks
 //= require_tree .
 //= require jquery.jscroll.min.js
+//= require jquery.raty.js
 //= require popper
 //= require cocoon
 //= require bootstrap-sprockets

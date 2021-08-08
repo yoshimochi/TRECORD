@@ -1,7 +1,8 @@
 class Admin::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
-    @post_comments = PostComment.find_by(id: @post.id)
+    @post_comment = PostComment.new
+    @post_comments = @post.post_comments.includes(:user)
   end
 
   def edit

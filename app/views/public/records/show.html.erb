@@ -1,5 +1,19 @@
 <%= link_to '一覧に戻る', records_path %>
 
+<div id="star-rate-<%= @record.id %>"></div>
+  <script>
+  $('#star-rate-<%= @record.id %>').raty({
+    size: 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    half: true,
+    readOnly: true,
+    score: <%= @record.rate %>,
+  });
+  </script>
+</div>
+
 <% @record.training_records.each do |training_record| %>
 <div class="card">
     <table class="records-table table table-striped">

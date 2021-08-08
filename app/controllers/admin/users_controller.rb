@@ -13,11 +13,21 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     @tags = @user.tags.find_by(id: @tag_id)
   end
-  
+
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to admin_users_path
+  end
+
+  def following
+    @user = User.find(params[:user_id])
+    @users = user.followings
+  end
+
+  def follower
+    @user = User.find(params[:user_id])
+    @users = user.followers
   end
 
   private
