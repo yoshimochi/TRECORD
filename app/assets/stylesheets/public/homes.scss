@@ -1,3 +1,45 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// topページ用
+.image__top {
+  height: 600px;
+}
+.image1 {
+  background-image: url(jogging.jpg);
+}
+.image2 {
+  background-image: url(man.jpg);
+}
+.image3 {
+  background-image: url(people.jpg);
+}
+.image4 {
+  background-image: url(training.jpg);
+}
+
+.head-translation {
+  font-size: 15px;
+}
+
+/* 以下、Aboutページ用 */
+.about-content {
+  margin-top: 50px;
+}
+
+.about-text {
+  font-size: 20px;
+  padding-top: 30px;
+  line-height: 180%;
+  color: white;
+}
+
+.thema {
+  color: limegreen;
+}
+
+.about-min-title {
+  font-size: 15px;
+}

@@ -1,12 +1,15 @@
-
-  <% @posts.each do |post| %>
-    <div class="col-lg-3 col-md-4 col-sm-6">
-      <div class="card">
+<div class="container">
+  <div class="row">
+    <div class="card-deck">
+      <% @posts.each do |post| %>
+      <div class="card border-dark" style="width: 20rem;">
         <div class="card-body">
-          <h5 class="card-title"><%= post.user.name %></h5>
+          <h5 class="card-title">
+            <%= attachment_image_tag post.user, :profile_image, format: 'jpeg', size: "100x100", class: "card-img-top"  %>
+            <%= post.user.name %>
+          </h5>
           <p class="card-text"><%= post.body %></p>
         </div>
-        <%= attachment_image_tag post.user, :profile_image, format: 'jpeg', size: "100x100", class: "card-img-top"  %>
         <div class="card-body">
           ♥<%= post.favorites.count %> いいね
           <% if user_signed_in? %>
@@ -16,7 +19,10 @@
           <% end %>
         </div>
       </div>
+    <% end %>
     </div>
-  <% end %>
+  </div>
+</div>
+
 
 
