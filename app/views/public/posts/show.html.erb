@@ -1,5 +1,5 @@
 <div class="post container">
-  <div class="card">
+  <div class="card card__post" style="width: 50rem;">
     <div class="card-body">
       <div class="card-title">
         <table>
@@ -26,18 +26,8 @@
       </div>
       <div class="card-body">
         <p class="card-text"><%= @post.body %></p>
-        <%= attachment_image_tag @post.user, :profile_image, format: 'jpeg',  fallback: "no_image.png", size: "200x180", class: "bd-placeholder-img card-img-bottom " %>
+        <%= attachment_image_tag @post, :image, format: 'jpeg', size: "200x180", class: "bd-placeholder-img card-img-bottom " %>
       </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="card-new-comment">
-      <%= form_with(model:[@post, @post_comment], local: true) do |f| %>
-        <%= f.text_area :comment, class: "form-control" %>
-        <div class="btn mb-mt-10">
-          <%= f.submit '送信する', class: "btn btn-primary" %>
-        </div>
-      <% end %>
     </div>
   </div>
 
@@ -58,5 +48,11 @@
     </table>
     <% end %>
   </div>
-
-</div>
+  <div class="form-group">
+    <%= form_with(model:[@post, @post_comment], local: true) do |f| %>
+      <%= f.text_area :comment, class: "form-control" %>
+      <div class="btn mb-mt-10">
+        <%= f.submit '送信する', class: "btn btn-primary btn-lg btn-block" %>
+      </div>
+    <% end %>
+  </div>

@@ -13,13 +13,20 @@
             <div class="px-4 pt-0 pb-4 cover">
                 <div class="media align-items-end profile-head">
                     <div class="profile mr-3">
-                      <img src="images/no_image.jpg" alt="..." width="130" class="rounded mb-2 img-thumbnail">
+                      <%= attachment_image_tag @user, :profile_image, size:'100x100'  %>
                       <% if user_signed_in? && @user == current_user %>
                         <%= link_to "プロフィール編集", "/#{current_user.name}/edit", class: "btn btn-outline-dark btn-sm btn-block" %>
                       <% end %>
                     </div>
                     <div class="media-body mb-5 text-white">
                         <h4 class="mt-0 mb-0"><%= @user.name %></h4>
+                        <% if logged_in? && current_user != @user %>
+                          <% if current_user.following?(@user) %>
+                            <%= button_to 'フォロー解除', relationship_path(current_user.relationships.find_by(follower: @user)), method: :delete %>
+                          <% else %>
+                            <%= button_to 'フォロー', relationships_path(follower: @user) %>
+                          <% end %>
+                        <% end %>
                         <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>
                           <% @user.tags.each do |tag| %>
                             <%= tag.name %>
@@ -32,24 +39,24 @@
                 <ul class="list-inline mb-0">
                     <li class="list-inline-item">
                         <h5 class="font-weight-bold mb-0 d-block">
-                          <%= link_to posts_path(@user) do %>
                             <%= @user.posts.count %>
+                          <%= link_to posts_path(@user) do %>
+                            </h5><small class="text-muted"> <i class="fas fa-image mr-1"></i>Posts</small>
                           <% end %>
-                        </h5><small class="text-muted"> <i class="fas fa-image mr-1"></i>Posts</small>
                     </li>
                     <li class="list-inline-item">
                         <h5 class="font-weight-bold mb-0 d-block">
-                          <%= link_to user_follower_path(@user) do %>
                             <%= @user.followers.count %>
+                          <%= link_to follower_path("#{@user.name}") do %>
+                            </h5><small class="text-muted">Followers</small>
                           <% end %>
-                        </h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Followers</small>
                     </li>
                     <li class="list-inline-item">
                         <h5 class="font-weight-bold mb-0 d-block">
-                          <%= link_to user_following_path(@user) do %>
                             <%= @user.followings.count %>
+                          <%= link_to following_path("#{@user.name}") do %>
+                            </h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Following</small>
                           <% end %>
-                        </h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Following</small>
                     </li>
                 </ul>
             </div>
@@ -63,4 +70,20 @@
     </div>
 </div>
 
-
+ <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">投稿一覧</h6>
+    <% @user.posts.each do |post| %>
+    <div class="media text-muted pt-3">
+      <%= image_tag 'no_image.jpg', class: "mr-2 rounded", width: "32", height: "32" %>
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark"><%= @user.name %></strong>
+        <%= link_to post_path(post) do %>
+          <%= post.body %>
+        <% end %>
+      </p>
+    </div>
+    <% end %>
+    <small class="d-block text-right mt-3">
+      <a href="#">All updates</a>
+    </small>
+  </div>

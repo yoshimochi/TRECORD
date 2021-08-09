@@ -16,6 +16,15 @@
 
  @import "bootstrap";
 
+body {
+    background-color: #cccccc;
+}
+
+// public
+.image__top {
+  height: 500px; /* ここの高さはいくつでも構いません */
+}
+
 .form-signin {
     width: 100%;
     max-width: 420px;
@@ -23,12 +32,57 @@
     margin: auto;
   }
 
-.card {
-    min-width: 220px;
-    max-width: 600px;
-    margin-bottom: 10px !important;
-    margin: auto;
+// top
+.calendar {
+    width: 10px auto;
+    padding: 10px;
+    margin-top: 20px;
   }
+
+.calendar-title {
+  font-size: 20px;
+}
+
+
+
+// about
+.about {
+  text-align: right;
+  position: fixed;
+  top: 50px;
+  right: 20px;
+  z-index: 200
+}
+
+.main-visual {
+  width: 520px;
+  height: 1400px;
+  position: fixed;
+}
+
+
+/* ページタイトル */
+.page-title {
+  color: limegreen;
+  font-size: 50px;
+  letter-spacing: 8px; /* カーニング調整：文字間のスペース */
+}
+
+.page-title-translate {
+  color: limegreen;
+  letter-spacing: 8px;
+}
+
+
+// 投稿ページ
+.card {
+    margin: 10px auto;
+  }
+
+.card__post {
+  width: 100%;
+  margin: 10px auto;
+}
 
 .card-new-comment  {
    max-width: 400px;
@@ -44,6 +98,20 @@
     border: none;
   }
 
+// トレーニング記録ページ
+  .card__record {
+    max-width: 60rem;
+  }
+
+.card__record-head {
+  background-color: #228B22;
+  color: #fff;
+}
+
+// ユーザー一覧
+.media {
+  font-size: 20px;
+}
 
 .btn {
     margin: 20 0 0 auto;
@@ -105,6 +173,18 @@ table .post-delete {
   margin: 0 auto;
 }
 
-.btn {
-    width: 10em;
+// .btn {
+//   width: 10em;
+// }
+
+footer {
+  text-align: center;
+}
+
+img {
+  width: 130;
+}
+
+.card-new-comment {
+    width: 100%;
 }

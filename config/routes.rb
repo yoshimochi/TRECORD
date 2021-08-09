@@ -53,6 +53,8 @@ Rails.application.routes.draw do
     get '/mypage' => 'users#mypage'
     get '/:username' => 'users#show'
     get '/:username/edit' => 'users#edit'
+    get '/:username/following' => 'users#following', as: 'following'
+    get '/:username/follower' => 'users#follower', as: 'follower'
     patch '/:username' => 'users#update'
   end
 
