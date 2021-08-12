@@ -1,15 +1,21 @@
-<% if user_signed_in? && @user == current_user %>
-  <h1>マイページ</h1>
-<% else %>
-  <h1>ユーザーページ</h1>
-<% end %>
-
-
-
-
-<div class="row py-5 px-4">
-    <div class="col-md-5 mx-auto">
-        <div class="bg-white shadow rounded overflow-hidden">
+<div class="container animate__animated animate__swing">
+  <div class="row">
+    <div class="col-12">
+      <% if user_signed_in? && @user == current_user %>
+        <h1 class="page-title">マイページ</h1>
+      <% else %>
+        <h1 class="page-title">ユーザーページ</h1>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p class="page-title-translate"><%= @user.name %>のマイページ</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="users-container col-10 mt-5 ml-5">
+        <div class="user-profile clearfix bg-white shadow rounded overflow-hidden">
             <div class="px-4 pt-0 pb-4 cover">
                 <div class="media align-items-end profile-head">
                     <div class="profile mr-3">
@@ -68,22 +74,32 @@
             </div>
         </div>
     </div>
-</div>
-
- <div class="my-3 p-3 bg-white rounded shadow-sm">
-    <h6 class="border-bottom border-gray pb-2 mb-0">投稿一覧</h6>
-    <% @user.posts.each do |post| %>
-    <div class="media text-muted pt-3">
-      <%= image_tag 'no_image.jpg', class: "mr-2 rounded", width: "32", height: "32" %>
-      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        <strong class="d-block text-gray-dark"><%= @user.name %></strong>
-        <%= link_to post_path(post) do %>
-          <%= post.body %>
-        <% end %>
-      </p>
-    </div>
-    <% end %>
-    <small class="d-block text-right mt-3">
-      <a href="#">All updates</a>
-    </small>
   </div>
+
+  <div class="user-posts">
+    <table class="table table-hover">
+      <thead class="table-color">
+        <tr>
+          <th class="text-center">Posts</th>
+          <th class="text-center">Date</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @user.posts.each do |post| %>
+        <tr class="text-center">
+          <td>
+            <%= link_to post_path(post) do %>
+              <%= post.body %>
+            <% end %>
+          </td>
+
+          <td>
+            <%= post.created_at.strftime('%Y/%m/%d') %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

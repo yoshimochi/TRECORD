@@ -2,29 +2,67 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.w-full {
+    width: 100%;
+}
+.text-center {
+    text-align: center;
+}
+.p-8 {
+    padding: 2rem;
+}
+.justify-center {
+    justify-content: center;
+}
+.items-center {
+    align-items: center;
+}
+.flex {
+    display: flex;
+}
 
-// topページ用
-.image__top {
-  height: 600px;
-}
-.image1 {
-  background-image: url(jogging.jpg);
-}
-.image2 {
-  background-image: url(man.jpg);
-}
-.image3 {
-  background-image: url(people.jpg);
-}
-.image4 {
-  background-image: url(training.jpg);
-}
 
-.head-translation {
-  font-size: 15px;
-}
+
+// /* フェードインアニメーション設定 */
+// .fadein {
+//   animation-name: fade-in;
+//   animation-duration: 2s; /*アニメーションが始まって終わるまでの時間：2秒(2second)*/
+//   animation-timing-function: ease-out; /*アニメーションの進行の度合い:開始時は緩やか、終了にかけて早く変化*/
+//   animation-delay: 0s; /*アニメーションの開始時間：0秒後に開始*/
+//   animation-iteration-count: 1; /*繰り返し回数：1回*/
+//   animation-direction: normal; /*再生方向の指定・往復処理：順方向再生*/
+//   animation-fill-mode: forwards; /*アニメーション後のスタイルをどうするか*/
+// }
+
+// @keyframes fade-in {
+//   0% {
+//     opacity: 0; /* opacityプロパティ：透明度の指定：０＝透明、１＝不透明 */
+//     transform: translate3d(40px, 0, 0); /* translate3d()はCSSの関数で、要素を3D空間内で再配置するもの:tanslated3d(tx,ty,tz)/tx=変形ベクトルの横座標、ty=縦座標、tz=z成分 */
+//   }
+//   100% {
+//     opacity: 1;
+//     transform: translate3d(0, 0, 0);
+//   }
+// }
 
 /* 以下、Aboutページ用 */
+.about {
+  position: fixed;
+  left: 800px;
+  text-align: right;
+}
+
+.page-title {
+  color: #FF8B00;
+  font-size: 50px;
+  letter-spacing: 8px; /* カーニング調整：文字間のスペース */
+}
+
+.page-title-translate {
+  color: #FF8B00;
+  letter-spacing: 8px;
+}
+
 .about-content {
   margin-top: 50px;
 }
@@ -33,11 +71,10 @@
   font-size: 20px;
   padding-top: 30px;
   line-height: 180%;
-  color: white;
 }
 
 .thema {
-  color: limegreen;
+  color: #FF8B00;
 }
 
 .about-min-title {

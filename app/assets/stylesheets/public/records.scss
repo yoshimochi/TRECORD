@@ -1,3 +1,14 @@
 // Place all the styles related to the public/records controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.card__record {
+  text-align: center;
+  max-width: 80%;
+  margin: 20px auto;
+}
+
+.new-record {
+  margin: 10px auto;
+}

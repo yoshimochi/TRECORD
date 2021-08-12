@@ -20,9 +20,11 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.includes(post_comments: :user).find(params[:id])
+    # @post = Post.find(params[:id])
     @post_comment = PostComment.new
-    @post_comments = @post.post_comments.includes(:user)
+    @post_comments = PostComment.all
+    # @post_comments = @post.post_comments.includes(:user)
   end
 
   def edit

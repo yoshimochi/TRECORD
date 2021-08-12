@@ -16,68 +16,51 @@
 
   <body>
 
+        <%= yield %>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/">Trecord</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
 
-      <div  class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item active">ようこそ、<%= current_user.name %>!</li>
-          <li class="nav-item active"><%= link_to 'マイページ', mypage_path, class: "nav-link" %></li>
-          <li class="nav-item active"><%= link_to 'About', about_path, class: "nav-link" %></li>
-          <li class="nav-item active"><%= link_to '投稿一覧', posts_path, class: "nav-link" %></li>
-          <li class="nav-item active"><%= link_to 'トレーニング一覧', records_path, class: "nav-link" %></li>
-          <li class="nav-item active"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %></li>
-
-        <% elsif admin_signed_in? %>
-          <li class="nav-item active"><%= link_to '会員一覧', admin_users_path, class: "nav-link" %></li>
-          <li class="nav-item active"><%= link_to '投稿一覧', admin_root_path, class: "nav-link" %></li>
-          <li class="nav-item active"><%= link_to '種目一覧', admin_events_path, class: "nav-link" %></li>
-          <li class="nav-item active"><%= link_to 'タグ一覧', admin_tags_path, class: "nav-link" %></li>
-          <li class="nav-item active"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "nav-link" %></li>
-
-        <% else %>
-          <li class="nav-item active"><%= link_to 'About', about_path, class: "nav-link" %></li>
-          <li class="nav-item active"><%= link_to '投稿一覧', posts_path, class: "nav-link" %></li>
-          <li class="nav-item active"><%= link_to '新規会員登録', new_user_registration_path, class: "nav-link" %></li>
-          <li class="nav-item active"><%= link_to 'ログイン', new_user_session_path, class: "nav-link" %></li>
-        <% end %>
+    <footer class="font-sans bg-black text-white py-8 px-4">
+      <div class="mx-auto max-w-xl overflow-hidden flex justify-between items-center">
+      <% if user_signed_in? %>
+        <ul class="text-sm text-gray-700 list-none p-0 flex items-center">
+          <li> <a href="/" class="block mr-4 w-32">
+              <img src="/images/trecord.jpg" class="" alt="logo">
+            </a></li>
+          <li>
+            <%= link_to  users_path , id: "UsersIcon", class: "inline-block py-2 px-3 text-gray-500 hover:text-gray-400 no-underline" do %>
+              <i class="fas fa-users"></i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to  users_path , id: "UsersIcon", class: "inline-block py-2 px-3 text-gray-500 hover:text-gray-400 no-underline" do %>
+              <i class="fas fa-users"></i>
+            <% end %>
+          </li>
+          <li>
+            <% if current_page?(current_user) && current_page?(controller: 'users', action: 'show') %>
+              <%= link_to  "/users/edit" , class: "Header__User inline-block py-2 px-3 text-gray-500 hover:text-gray-400 no-underline" do %>
+                <div class="Header__User"><i class="fas fa-user-edit"></i></div>
+              <% end %>
+            <% end %>
+          </li>
+          <li>
+             <%= link_to records_path, id: "EventsIcon", class: "inline-block py-2 px-3 text-gray-500 hover:text-gray-400 no-underline" do %>
+                <i class="fas fa-burn"></i>
+              <% end %>
+          </li>
+          <li>
+            <%= link_to  destroy_user_session_path, id: "SignOutIcon",  method: :delete, class: "inline-block py-2 px-3 text-gray-500 hover:text-gray-400 no-underline" do %>
+              <i class="fas fa-sign-out-alt"></i>
+            <% end %>
+          </li>
         </ul>
+      <% end %>
+        <p class="inline-block py-2 px-3 text-gray-700 text-xs"> ©2021 TRECODE. All rights reserved.</p>
       </div>
-    </nav>
+    </footer>
 
-
-
-    <%= yield %>
-
-    <% if user_signed_in? %>
-      <footer class="Footer">
-
-        <%= link_to  root_path , id: "HomeIcon"  do %>
-          <i class="fas fa-home"></i>
-        <% end %>
-        <%= link_to  users_path , id: "UsersIcon"  do %>
-          <i class="fas fa-users"></i>
-        <% end %>
-        <% if current_page?(current_user) && current_page?(controller: 'users', action: 'show') %>
-          <%= link_to  "/users/edit" , class: "Header__User"  do %>
-            <div class="Header__User"><i class="fas fa-user-edit"></i></div>
-          <% end %>
-        <% end %>
-
-        <%= link_to  destroy_user_session_path, id: "SignOutIcon",  method: :delete  do %>
-          <i class="fas fa-sign-out-alt"></i>
-        <% end %>
-
-      </footer>
-    <% end %>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </section>
   </body>
 </html>

@@ -1,3 +1,42 @@
 // Place all the styles related to the public/posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.posts {
+  margin-right: 70px;
+}
+
+.post-container {
+  border: solid gray 4px;
+  margin-bottom: 70px;
+  padding-bottom: 10px;
+  background-color: white;
+}
+
+.plants-image {
+  padding: 20px 0;
+  overflow: hidden; /*内容がボックスに収まらない場合、収まらない部分は非表示となる。*/
+  img {
+    transition: all 0.5s; /*トランジションの効果を適用できる全てのプロパティを指定:トランジションの実行にかかる所要時間*/
+    &:hover {
+      transform: scale(1.1, 1.1); /*縮尺の設定：縮尺比率1.1倍*/
+    }
+  }
+}
+
+// .page-title {
+//   display: inline;
+//   font-size: 18px;
+//   margin-left: 10px;
+// }
+
+.post-details {
+  margin: 0;
+  padding: 15px 0 0 15px;
+  list-style: none;
+  display: inline-block;
+  li {
+    display: inline-block;
+  }
+}
+
