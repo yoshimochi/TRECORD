@@ -2,13 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-.card__record {
-  text-align: center;
-  max-width: 80%;
-  margin: 20px auto;
+// 一覧画面
+.new-record {
+  padding: 20px;
+  margin: 0 auto;
+  padding-bottom:150px;
 }
 
-.new-record {
-  margin: 10px auto;
+.record__field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.record__field--item {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.record__field--set {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.user__record {
+  max-width: 80%;
+  padding: 20px;
+  margin: 0 auto;
 }

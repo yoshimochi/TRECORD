@@ -1,18 +1,7 @@
-<div class="container">
-  <div class="posts row animate__animated animate__fadeInUpBig">
-    <% @posts.each do |post| %>
-      <div class="col-3"></div>
-      <div class="col-8 post-container">
-        <div class="post-image text-center collapse4">
-          <%= link_to post_path(post.id) do%>
-            <%= attachment_image_tag post, :image, width: "100%", height: "100%", fallcack: "no-image.jpg" %>
-          <% end %>
-        </div>
+    <% @user.posts.each do |post| %>
+      <div class="post-container">
         <div class="block-content collapse5">
-          <%= link_to user_path(post.user_id) do %>
-            <%= attachment_image_tag post.user, :profile_image, class: "rounded-circle", size:"70x70" ,fallback:"no_image.jpg" %>
-          <% end %>
-          <h4 id="post-title">
+          <h4 id="post-body">
             <%= post.body %>
           </h4><br>
           <ul class="post-details">
@@ -37,5 +26,5 @@
         </div>
       </div>
     <% end %>
-  </div>
-</div>
+
+

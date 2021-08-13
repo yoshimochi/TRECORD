@@ -1,5 +1,21 @@
-<section class="toppage font-sans h-screen w-full bg-cover text-center flex flex-col items-center justify-center"
-  style="no-repeat center;">
-  <label for="" class="uppercase tracking-extrawide text-xs font-hairline mt-8">トレーニングを記録するには会員登録が必要です</label>
-  <h3 class="text-white mx-auto max-w-sm mt-4 font-normal text-2xl leading-normal"><%= link_to 'トレーニングを記録する', new_record_path %></h3>
-</section>
+<div class= 'homes__calender'>
+  <% if user_signed_in? %>
+    <%= month_calendar events: @records do |date, records| %>
+        <%= date.day %>
+        <% records.each do |record| %>
+          <%= link_to record_path(record) do %>
+            <%= record.comment %>
+          <% end %>
+        <% end %>
+    <% end %>
+  <% else %>
+    <%= month_calendar do |date| %>
+        <%= date.day %>
+      <% end %>
+  <% end %>
+</div>
+
+<div class="homes__btn text-center mt-3 mb-5">
+  <%= link_to 'トレーニングを追加', new_record_path, class: "btn btn-primary btn-lg btn-block" %>
+</div>
+

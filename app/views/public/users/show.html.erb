@@ -1,11 +1,13 @@
-<div class="container animate__animated animate__swing">
+<div class="container users-title">
   <div class="row">
     <div class="col-12">
-      <% if user_signed_in? && @user == current_user %>
-        <h1 class="page-title">マイページ</h1>
-      <% else %>
-        <h1 class="page-title">ユーザーページ</h1>
-      <% end %>
+      <h1 class="page-title">
+        <% if user_signed_in? && @user == current_user %>
+          <h1 class="page-title">マイページ</h1>
+        <% else %>
+          <h1 class="page-title">ユーザーページ</h1>
+        <% end %>
+      </h1>
     </div>
   </div>
   <div class="row">
@@ -13,30 +15,28 @@
       <p class="page-title-translate"><%= @user.name %>のマイページ</p>
     </div>
   </div>
-  <div class="row">
-    <div class="users-container col-10 mt-5 ml-5">
-        <div class="user-profile clearfix bg-white shadow rounded overflow-hidden">
+</div>
+
+
+
+
+<div class="row py-5 px-4">
+    <div class="col-md-5 mx-auto">
+        <div class="bg-white shadow rounded overflow-hidden">
             <div class="px-4 pt-0 pb-4 cover">
                 <div class="media align-items-end profile-head">
-                    <div class="profile mr-3">
-                      <%= attachment_image_tag @user, :profile_image, size:'100x100'  %>
+                    <div class="profile mr-3 mt-3"><img src="/assets/no_image.png" alt="..." width="130" class="rounded mb-2 img-thumbnail">
                       <% if user_signed_in? && @user == current_user %>
                         <%= link_to "プロフィール編集", "/#{current_user.name}/edit", class: "btn btn-outline-dark btn-sm btn-block" %>
                       <% end %>
                     </div>
                     <div class="media-body mb-5 text-white">
                         <h4 class="mt-0 mb-0"><%= @user.name %></h4>
-                        <% if logged_in? && current_user != @user %>
-                          <% if current_user.following?(@user) %>
-                            <%= button_to 'フォロー解除', relationship_path(current_user.relationships.find_by(follower: @user)), method: :delete %>
-                          <% else %>
-                            <%= button_to 'フォロー', relationships_path(follower: @user) %>
-                          <% end %>
-                        <% end %>
-                        <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>
+                        <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2">
                           <% @user.tags.each do |tag| %>
                             <%= tag.name %>
                           <% end %>
+                        </i>
                         </p>
                     </div>
                 </div>
@@ -45,61 +45,61 @@
                 <ul class="list-inline mb-0">
                     <li class="list-inline-item">
                         <h5 class="font-weight-bold mb-0 d-block">
-                            <%= @user.posts.count %>
-                          <%= link_to posts_path(@user) do %>
-                            </h5><small class="text-muted"> <i class="fas fa-image mr-1"></i>Posts</small>
-                          <% end %>
+                          <%= @user.posts.count %>
+                        </h5><small class="text-muted"> <i class="fas fa-image mr-1"></i>Posts</small>
                     </li>
                     <li class="list-inline-item">
                         <h5 class="font-weight-bold mb-0 d-block">
-                            <%= @user.followers.count %>
-                          <%= link_to follower_path("#{@user.name}") do %>
-                            </h5><small class="text-muted">Followers</small>
-                          <% end %>
-                    </li>
-                    <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block">
-                            <%= @user.followings.count %>
                           <%= link_to following_path("#{@user.name}") do %>
-                            </h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Following</small>
+                            <%= @user.followers.count %>
                           <% end %>
+                        </h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Followers</small>
+                    </li>
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block">
+                          <%= link_to follower_path("#{@user.name}") do %>
+                            <%= @user.followings.count %>
+                          <% end %>
+                        </h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Following</small>
                     </li>
                 </ul>
             </div>
             <div class="px-4 py-3">
-                <h5 class="mb-0"></h5>
+                <h5 class="mb-0">About</h5>
                 <div class="p-4 rounded shadow-sm bg-light">
                     <p class="font-italic mb-0"><%= @user.introduction %></p>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<ul class="profile__nav nav nav-tabs mb-3">
+  <li class="nav-item">
+    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Posts</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Comments</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Records</a>
+  </li>
+</ul>
+<div class="tab-content" id="pills-tabContent">
+  <div class="profile__posts tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+    <%=render 'posts' %>
   </div>
+  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 
-  <div class="user-posts">
-    <table class="table table-hover">
-      <thead class="table-color">
-        <tr>
-          <th class="text-center">Posts</th>
-          <th class="text-center">Date</th>
-          <th colspan="2"></th>
-        </tr>
-      </thead>
-      <tbody>
-      <% @user.posts.each do |post| %>
-        <tr class="text-center">
-          <td>
-            <%= link_to post_path(post) do %>
-              <%= post.body %>
+  </div>
+  <div class="profile__calender tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+      <%= month_calendar events: @user.records do |date, records| %>
+          <%= date.day %>
+          <% records.each do |record| %>
+            <%= link_to record_path(record) do %>
+              <%= record.comment %>
             <% end %>
-          </td>
-
-          <td>
-            <%= post.created_at.strftime('%Y/%m/%d') %>
-          </td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
+          <% end %>
+    <% end %>
   </div>
 </div>

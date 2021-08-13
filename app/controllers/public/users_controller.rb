@@ -7,14 +7,16 @@ class Public::UsersController < ApplicationController
   end
 
   def mypage
+    @tags = @user.tags.find_by(id: @tag_id)
     redirect_to "/#{current_user.name}"
   end
 
   def show
-    @tags = @user.tags.find_by(id: @tag_id)
-    @records = @user.records.find_by(id: @record_id)
     @training_records = Record.where(params[:training_record])
     @posts = @user.posts.find_by(id: @post_id)
+    @all_records = Record.includes(:user)
+    @user = User.find_by(name: params[:username])
+    @records = @user.records.where(name: params[:username])
   end
 
   def edit
@@ -35,15 +37,15 @@ class Public::UsersController < ApplicationController
   def following
     @title = "Following"
     @user = User.find_by(name: params[:username])
-    @users = @user.followings.all
-    render 'show_follow'
+    @users = @user.followings
+    render 'show_following'
   end
 
   def follower
     @title = "Followers"
     @user = User.find_by(name: params[:username])
-    @users = @user.followers.all
-    render 'show_follow'
+    @users = @user.followers
+    render 'show_follower'
   end
 
   def unsubscribe

@@ -1,8 +1,20 @@
 <div class="new-record" id="new-record">
   <div class="new-record＿Box">
-    <h4>トレーニングを記録する</h4>
-    <div class="newecord＿Box＿Form">
+    <div class="container users-title">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="page-title collapse2">Record</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <p class="page-title-translate collapse3">トレーニングを記録する</p>
+        </div>
+      </div>
+    </div>
+    <div class="new-record＿Box＿Form">
       <%= render 'form', path: records_path, method: :post, record: @record %>
     </div>
   </div>
 </div>
+
