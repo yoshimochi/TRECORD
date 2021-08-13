@@ -15,10 +15,10 @@
 
 //= require jquery3
 //= require rails-ujs
+//= require jquery.jscroll.min.js
 //= require activestorage
 //= require turbolinks
 //= require popper
 //= require cocoon
 //= require bootstrap-sprockets
 //= require_tree .
-
