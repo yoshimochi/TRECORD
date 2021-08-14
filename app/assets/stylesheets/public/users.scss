@@ -33,6 +33,11 @@
   }
 }
 
+.profile__name {
+  font-size: 30px;
+  text-align: center;
+}
+
 .profile__calender {
   max-width: 80%;
   margin: 0 auto;
@@ -70,4 +75,9 @@
   max-width: 60%;
   margin: 0 auto;
   font-size: 20px;
+}
+
+.search-form {
+    margin-bottom: 20px;
+    text-align: end;
 }

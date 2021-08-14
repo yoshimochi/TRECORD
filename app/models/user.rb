@@ -47,6 +47,10 @@ class User < ApplicationRecord
     super && (is_active == false)
   end
 
+  def self.search(keyword)
+    where(["name like? OR introduction like?", "%#{keyword}%", "%#{keyword}%"])
+  end
+
   # twitter_api
   # def self.find_for_oauth(auth)
   #   user = User.find_by(uid: auth.uid, provider: auth.provider)

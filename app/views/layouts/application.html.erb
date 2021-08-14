@@ -21,22 +21,59 @@
       <%= yield %>
     </div>
 
+  <footer class="footer">
   <% if user_signed_in? %>
-    <footer class="footer">
-        <%= link_to  root_path , id: "HomeIcon"  do %>
-          <i class="fas fa-home"></i>
-        <% end %>
-        <%= link_to  users_path , id: "UsersIcon"  do %>
-          <i class="fas fa-users"></i>
-        <% end %>
-        <%= link_to records_path, id: "EventsIcon" do %>
-          <i class="fas fa-burn"></i>
-        <% end %>
-        <%= link_to  destroy_user_session_path, id: "SignOutIcon",  method: :delete  do %>
-          <i class="fas fa-sign-out-alt"></i>
-        <% end %>
-      </footer>
+    <%= link_to  root_path , id: "HomeIcon"  do %>
+      <i class="fas fa-home">Top</i>
     <% end %>
+    <%= link_to  users_path , id: "UsersIcon"  do %>
+      <i class="fas fa-users">Users</i>
+    <% end %>
+    <%= link_to posts_path, id: "PostsIcon" do %>
+      <i class="fas fa-clipboard">Posts</i>
+    <% end %>
+    <%= link_to  destroy_user_session_path, id: "SignOutIcon",  method: :delete  do %>
+      <i class="fas fa-sign-out-alt">SignOut</i>
+    <% end %>
+
+  <% elsif admin_signed_in? %>
+    <%= link_to  root_path , id: "HomeIcon"  do %>
+      <i class="fas fa-home">Top</i>
+    <% end %>
+    <%= link_to admin_users_path, id: "UsersIcon"  do %>
+      <i class="fas fa-users">Users</i>
+    <% end %>
+    <%= link_to admin_root_path, id: "PostsIcon" do %>
+      <i class="fas fa-clipboard">Posts</i>
+    <% end %>
+    <%= link_to '種目一覧', admin_events_path, id: "EventsIcon" do %>
+      <i class="fas fa-fire-alt">Events</i>
+    <% end %>
+    <%= link_to 'タグ一覧', admin_tags_path, id: "TagsIcon" do %>
+      <i class="fas fa-tags">Tags</i>
+    <% end %>
+    <%= link_to  destroy_admin_session_path, id: "SignOutIcon",  method: :delete  do %>
+      <i class="fas fa-sign-out-alt">SignOut</i>
+    <% end %>
+
+  <% else %>
+    <%= link_to  root_path, id: "HomeIcon" do %>
+      <i class="fas fa-home">Top</i>
+    <% end %>
+    <%= link_to about_path, id: "AboutIcon" do %>
+      <i class="fas fa-book">About</i>
+    <% end %>
+      <%= link_to posts_path, id: "PostsIcon" do %>
+        <i class="fas fa-clipboard">Posts</i>
+      <% end %>
+      <%= link_to new_user_registration_path, id: "SignUpIcon" do %>
+        <i class="fas fa-user-plus">SignUp</i>
+      <% end %>
+      <%= link_to new_user_session_path, id: "SignInIcon" do %>
+        <i class="fas fa-sign-in-alt">SignIn</i>
+      <% end %>
+  <% end %>
+  </footer>
 
 
 

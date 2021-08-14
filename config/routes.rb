@@ -45,6 +45,7 @@ Rails.application.routes.draw do
       get 'following' => 'users#following', as: 'following'
       get 'follower' => 'users#follower', as: 'follower'
     end
+    get 'search' => 'users#search'
     get '/:username/unsubscribe' => 'users#unsubscribe'
     patch '/:username/widthdraw' => 'users#widthdraw', as: "users_widthdraw"
     resources :relationships, only: [:create, :destroy]

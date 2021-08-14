@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!, only: [:mypage, :edit, :update]
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:index, :show]
 
   def index
     @users = User.where(is_active: 'false')
@@ -59,18 +59,20 @@ class Public::UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def search
+    @users = User.search(params[:keyword])
+    @keyword = params[:keyword]
+    render "index"
+  end
+
   private
 
   def set_user
+    @users = User.where(is_active: 'false')
     @user = User.find_by(name: params[:username])
   end
 
   def user_params
-    # values = params.fetch(:user, {}).permit(:name, :profile_image, :introduction, tag_ids: [])
-    # if values[:tag_ids].nil?
-    #   values[:tag_ids] = []
-    # end
-    # return values
     values = params.require(:user).permit(:name, :profile_image, :introduction, tag_ids: [])
     if values[:tag_ids].nil?
       values[:tag_ids] = []
