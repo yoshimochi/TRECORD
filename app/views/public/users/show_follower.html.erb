@@ -1,6 +1,18 @@
+<div class="container users-title">
+   <div class="row">
+     <div class="col-12">
+       <h1 class="page-title collapse2">Followers</h1>
+     </div>
+   </div>
+   <div class="row">
+     <div class="col-12">
+       <p class="page-title-translate collapse3">フォロワー</p>
+     </div>
+   </div>
+ </div>
 
-<div class="my-3 p-3 bg-white rounded shadow-sm">
-  <h6 class="border-bottom border-gray pb-2 mb-0">一覧</h6>
+
+<div class="user__follow my-3 p-3 bg-white rounded shadow-sm">
   <div class="media text-muted pt-3">
   <% if @users.any? %>
     <% @users.each do |user| %>
@@ -23,7 +35,7 @@
           </div>
         </div>
         <span class="d-block">
-          <%= link_to posts_path(user) do %>
+          <%= link_to "/#{user.name}" do %>
             <%= user.posts.count %> Post
           <% end %>
           <%= link_to following_path("#{user.name}") do %>

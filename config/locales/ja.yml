@@ -56,3 +56,25 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+
+
+  activerecord:
+    models:
+      event: 種目
+    attributes:
+      event:
+        name: 入力した種目
+
+  activerecord:
+    models:
+      record: トレーニング記録
+    attributes:
+      record:
+        comment: タイトル
+
+  activerecord:
+    models:
+      post: 投稿
+    attributes:
+      post:
+        body: 投稿内容

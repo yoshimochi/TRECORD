@@ -1,43 +1,50 @@
-<div class="post container">
-  <div class="card">
-    <div class="card-body">
-      <div class="card-title">
-        <table>
-          <tr>
-            <td>
-               <%= attachment_image_tag @post.user, :profile_image, format: "jpeg", size: "60x60", fallback: "no_image.jpg", class: "img-circle" %>
-            </td>
-            <td></td>
-            <td>
-              <%= @post.user.name %><br />
-              <%= @post.post_comments.count %> コメント
-              ♥<%= @post.favorites.count %> いいね
-            </td>
-          </tr>
-        </table>
-      </div>
-      <div class="card-body">
-        <p class="card-text"><%= @post.body %></p>
-        <%= attachment_image_tag @post.user, :profile_image, format: 'jpeg',  fallback: "no_image.png", size: "200x180", class: "bd-placeholder-img card-img-bottom " %>
-      </div>
+<div class="container users-title">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="page-title collapse2 animate__animated animate__bounceInDown">Post</h1>
     </div>
   </div>
+  <div class="row">
+    <div class="col-12">
+      <p class="page-title-translate collapse3 animate__animated animate__backInRight"><%= @post.user.name %>さんの投稿</p>
+    </div>
+  </div>
+</div>
 
-
-  <div class="post-comment mt-5">
-    <table class="table table-bordered post-comments">
-    <% @post.post_comments.each do |post_comment| %>
-      <tr>
-        <th class="user-name">
-          <img src="<%= post_comment.user.profile_image %>" >, <%= post_comment.user.name %>
-        </th>
-        <th class="text-center"><%= post_comment.comment %></th>
-        <th class="text-right post-delete">
-          <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-danger" %>
-        </th>
-      </tr>
-    <% end %>
-    </table>
+<div class="card__posts card">
+  <%= attachment_image_tag @post, :image, fallcack: "no_image.jpg", class: "card-img-top" %>
+  <div class="card-body">
+    <p class="card-title">
+      <%= @post.body %>
+    </p>
+    <h4 class="card-subtitle text-muted">
+      <ul class="post-details">
+        <li>By <%= @post.user.name %></li>
+        <li>
+          <i class="fas fa-heart" style="color: crimson;"></i><%= @post.favorites.count %> いいね
+         </li>
+        <li><i class="far fa-comment-dots"></i>
+          <%= link_to "#{@post.post_comments.count}コメント", admin_post_path(@post.id) %>
+        </li>
+        <li><i class="far fa-clock"></i> <%= @post.created_at.strftime('%Y/%m/%d') %></li>
+        <li><%= link_to '編集', edit_admin_post_path(@post), class: "btn btn-primary" %></li>
+      </ul>
+    </h4>
   </div>
 
+  <div class="post-comment mt-5">
+    <% @post.post_comments.each do |post_comment| %>
+    <table class="table table-hover ">
+      <tr>
+        <th>
+          <img src="<%= post_comment.user.profile_image %>"> <%= post_comment.user.name %>
+        </th>
+        <th class="text-center"><%= post_comment.comment %></th>
+        <th class="text-right">
+          <%= link_to "削除", admin_post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-danger" %>
+        </th>
+      </tr>
+    </table>
+    <% end %>
+  </div>
 </div>

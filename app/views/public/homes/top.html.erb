@@ -1,5 +1,4 @@
-<div class= 'calender mt-5'>
-  <div class="col-10 mx-auto">
+<div class= 'homes__calender'>
   <% if user_signed_in? %>
     <%= month_calendar events: @records do |date, records| %>
         <%= date.day %>
@@ -14,9 +13,8 @@
         <%= date.day %>
       <% end %>
   <% end %>
-  </div>
-</div>
-<div class="text-center mt-5 mb-5">
-  <%= link_to 'トレーニングを追加', new_record_path, class: "btn btn-primary btn-lg btn-block" %>
 </div>
 
+<div class="homes__btn text-center mt-3 mb-5">
+  <%= link_to 'トレーニングを追加', new_record_path, class: "btn btn-primary btn-lg btn-block" %>
+</div>

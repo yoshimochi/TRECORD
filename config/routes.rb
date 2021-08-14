@@ -5,11 +5,16 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'homes#top'
-    resources :posts, only: [:show, :edit, :update, :destroy]
+    resources :posts, only: [:show, :edit, :update, :destroy] do
+      resources :post_comments, only: [:create, :destroy]
+    end
     resources :genres, only: [:index, :create, :edit, :update]
     resources :events, only: [:new, :create, :index, :edit, :update, :destroy]
     resources :tags, only: [:index, :create, :edit, :update]
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update] do
+      get 'following' => 'users#following', as: 'following'
+      get 'follower' => 'users#follower', as: 'follower'
+    end
   end
 
   devise_for :users, path: "users", controllers: {
@@ -28,23 +33,14 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
 
-    resources :genres, only: [:index, :show]
     resources :events, only: [:new, :create, :index]
-
-    resources :set_events, only:[:index, :update, :destroy, :create] do
-      collection do
-        delete 'destroy_all'
-      end
-    end
 
     resources :records, only: [:index, :new, :create, :show, :destroy]
     patch '/update_record' => 'records#update_record'
     delete '/delete_record' => 'records#delete_record'
 
-    resources :users do
-      get 'following' => 'users#following', as: 'following'
-      get 'follower' => 'users#follower', as: 'follower'
-    end
+    resources :users
+    get 'search' => 'users#search'
     get '/:username/unsubscribe' => 'users#unsubscribe'
     patch '/:username/widthdraw' => 'users#widthdraw', as: "users_widthdraw"
     resources :relationships, only: [:create, :destroy]

@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:new, :create, :show, :edit, :update, :destroy]
+  before_action :set_post, only: [:index]
 
   def new
     @post = Post.new
@@ -16,13 +17,13 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.order(created_at: "DESC").includes(:user).page(params[:page]).without_count.per(5)
+    @posts = Post.order(created_at: "DESC").includes(:user).page(params[:page]).without_count.per(2)
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.includes(post_comments: :user).find(params[:id])
     @post_comment = PostComment.new
-    @post_comments = @post.post_comments.includes(:user)
+    @post_comments = PostComment.all
   end
 
   def edit
@@ -36,6 +37,10 @@ class Public::PostsController < ApplicationController
   end
 
   private
+  def set_post
+    @posts = Post.order(created_at: "DESC").includes(:user).page(params[:page]).without_count.per(2)
+  end
+
   def post_params
     params.require(:post).permit(:body, :image)
   end

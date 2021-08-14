@@ -1,40 +1,69 @@
-<div class="my-3 p-3 bg-white rounded shadow-sm">
-  <h6 class="border-bottom border-gray pb-2 mb-0">一覧</h6>
-  <% @users.each do |user| %>
-  <div class="media text-muted pt-3">
-      <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg",width: "48", height: "48", class: "mr-2 rounded" %>
-      <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        <div class="d-flex justify-content-between align-items-center w-100">
-          <strong class="text-gray-dark">
+<div class="container users-title">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="page-title">Users</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p class="page-title-translate">ユーザー一覧</p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="search-form">
+    <%= form_with url: search_path, method: :get, local: true do |f| %>
+      <%= f.text_field :keyword, value: @keyword, placeholder: "キーワード検索" %>
+      <%= f.button :type => "submit" do %>
+        <i class="fas fa-search"></i>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
+
+<% @users.each do |user| %>
+<ul class="users font-sans list-none p-0 container text-gray-900">
+  <li class="inline-block flex justify-between items-center py-4">
+    <div class="flex items-start w-2/5">
+      <div class="w-10 h-10 rounded mr-3">
+        <div class="rounded-full h-10 w-10 bg-gray-300 m-auto">
+          <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg",width: "48", height: "48" %>
+        </div>
+      </div>
+      <div class="flex-1 overflow-hidden">
+        <div>
+          <span class="font-bold">
             <%= link_to "/#{user.name}" do %>
               <%= user.name %>
             <% end %>
-          </strong>
-          <div class="follow-button">
-          <% if logged_in? && current_user != @user %>
-            <% if current_user.following?(@user) %>
-              <%= button_to 'フォロー解除', relationship_path(current_user.relationships.find_by(follower: @user)), method: :delete, class: "btn btn-primary" %>
-            <% else %>
-              <%= button_to 'フォロー', relationships_path(follower: @user), class: "btn btn-outline-primary" %>
-            <% end %>
-          <% end %>
-          </div>
+          </span>
         </div>
-        <span class="d-block">
-          <%= link_to posts_path(user) do %>
+        <p class="text-black leading-normal">
+          <%= link_to "/#{user.name}" do %>
             <%= user.posts.count %> Post
           <% end %>
           <%= link_to following_path("#{user.name}") do %>
             <%= user.followers.count %> Follower
           <% end %>
           <%= link_to follower_path("#{user.name}") do %>
-            <%= user.followings.count %> Following
+            <%= user.followings.count %> Follow
           <% end %>
-        </span>
-        <span class="d-block">
-          <%= user.introduction %>
-        </span>
+        </p>
       </div>
-  </div>
-  <% end %>
-</div>
+    </div>
+    <p class="w-2/5"><%= user.introduction %></p>
+    <label for="status" class="font-bold w-1/5 text-right">
+      <% if logged_in? && current_user != @user %>
+        <% if current_user.following?(@user) %>
+          <%= button_to 'フォロー解除', relationship_path(current_user.relationships.find_by(follower: @user)), method: :delete, class: "btn btn-primary" %>
+        <% else %>
+          <%= button_to 'フォロー', relationships_path(follower: @user), class: "btn btn-outline-primary" %>
+        <% end %>
+      <% end %>
+    </label>
+  </li>
+</ul>
+<% end %>

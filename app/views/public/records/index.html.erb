@@ -1,11 +1,11 @@
-<div class= 'calender'>
-  <%= month_calendar events: @records do |date, records| %>
-      <%= date.day %>
+    <div class= 'calender'>
+      <%= month_calendar events: @records do |date, records| %>
+          <%= date.day %>
 
-      <% records.each do |record| %>
-        <%= link_to record_path(record) do %>
-          <%= record.comment %>
-        <% end %>
+          <% records.each do |record| %>
+            <%= link_to record_path(record) do %>
+              <%= record.comment %>
+            <% end %>
+          <% end %>
       <% end %>
-  <% end %>
-</div>
+    </div>

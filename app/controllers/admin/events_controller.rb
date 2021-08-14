@@ -1,5 +1,6 @@
 class Admin::EventsController < ApplicationController
-
+  
+  
   def new
     @event = Event.new
   end
@@ -7,7 +8,7 @@ class Admin::EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.save
-    redirect_to admin_event_path(@event)
+    redirect_to admin_events_path
   end
 
   def index
@@ -27,7 +28,7 @@ class Admin::EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     @event.update(update_event_params)
-    redirect_to admin_event_path(@event)
+    redirect_to admin_events_path
   end
 
   def destroy

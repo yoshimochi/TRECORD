@@ -1,7 +1,24 @@
-<h4>投稿一覧画面</h4>
-
-<div class="container">
+<div class="container users-title">
   <div class="row">
-    <%= render 'public/posts/posts' %>
+    <div class="col-12">
+      <h1 class="page-title collapse2">Posts</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p class="page-title-translate collapse3">すべての投稿</p>
+    </div>
   </div>
 </div>
+
+  <div class="container">
+    <div class="posts">
+      <div class="jscroll">
+        <%= render partial: "public/posts/posts" %>
+
+        <div class="skill-list">
+          <%= link_to_next_page @posts, '次のページ', class: "next" %>
+        </div>
+      </div>
+    </div>
+  </div>

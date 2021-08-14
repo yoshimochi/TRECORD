@@ -16,175 +16,47 @@
 
  @import "bootstrap";
 
-body {
-    background-color: #cccccc;
+ .main {
+     background-color: #F0EEE9;
+     min-height: 1200px;
+ }
+
+.footer {
+    list-style: none;
+    z-index: 100;
+    align-items: center;
+    background-color: #939597;
+    border-top: 1px solid gray;
+    display: flex;
+    height: 100px;
+    justify-content: space-between;
+    padding: 30px;
+    margin-top: 30px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 30px;
 }
 
-// public
-.image__top {
-  height: 500px; /* ここの高さはいくつでも構いません */
+.user--signin {
+    padding: 100px;
+    display: flex;
 }
 
 .form-signin {
     width: 100%;
-    max-width: 420px;
+    max-width: 450px;
     padding: 15px;
     margin: auto;
-  }
-
-// top
-.calendar {
-    width: 10px auto;
-    padding: 10px;
-    margin-top: 20px;
-  }
-
-.calendar-title {
-  font-size: 20px;
-}
-
-
-
-// about
-.about {
-  text-align: right;
-  position: fixed;
-  top: 50px;
-  right: 20px;
-  z-index: 200
-}
-
-.main-visual {
-  width: 520px;
-  height: 1400px;
-  position: fixed;
-}
-
-
-/* ページタイトル */
-.page-title {
-  color: limegreen;
-  font-size: 50px;
-  letter-spacing: 8px; /* カーニング調整：文字間のスペース */
-}
-
-.page-title-translate {
-  color: limegreen;
-  letter-spacing: 8px;
-}
-
-
-// 投稿ページ
-.card {
-    margin: 10px auto;
-  }
-
-.card__post {
-  width: 100%;
-  margin: 10px auto;
-}
-
-.card-new-comment  {
-   max-width: 400px;
-   margin: auto;
-  }
-
-  .post_comment {
-   max-width: 400px;
-   margin: auto;
-  }
-
-  .edit-post {
-    border: none;
-  }
-
-// トレーニング記録ページ
-  .card__record {
-    max-width: 60rem;
-  }
-
-.card__record-head {
-  background-color: #228B22;
-  color: #fff;
-}
-
-// ユーザー一覧
-.media {
-  font-size: 20px;
-}
-
-.btn {
-    margin: 20 0 0 auto;
-  }
-
-  .profile-head {
-    transform: translateY(5rem)
-}
-
-.cover {
-    background-image: url(https://images.unsplash.com/photo-1530305408560-82d13781b33a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80);
-    background-size: cover;
-    background-repeat: no-repeat
-}
-
-body {
-    min-height: 100vh;
-    overflow-x: hidden
-}
-
-.records-table {
-    text-align: center;
-    border-bottmo: solid 1px black;
-}
-
-.events-new {
-    border: none;
-}
-
-.calendar-heading {
     text-align: center;
 }
 
-nav.pagination {
-  display: none;
-}
-.scroll-list {
-  padding: 0;
+.form-control {
+    border-radius: 10px;
 }
 
-table .post-comments {
-  table-layout: fixed;
-}
-
-table .user-name {
-  width: 8em;
-}
-
-table .post-delete {
-  width: 5em;
-  text-align: center;
-}
-
-.admin-users {
-  margin: 0 auto;
-}
-
-.edit-user {
-  margin: 0 auto;
-}
-
-// .btn {
-//   width: 10em;
-// }
-
-footer {
-  text-align: center;
-}
-
-img {
-  width: 130;
-}
-
-.card-new-comment {
-    width: 100%;
+.error--message {
+    margin: 20px auto;
+    padding-left: 30px;
+    color: red;
 }

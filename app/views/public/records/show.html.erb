@@ -1,43 +1,60 @@
-<%= link_to '一覧に戻る', records_path %>
-
-<div id="star-rate-<%= @record.id %>"></div>
-  <script>
-  $('#star-rate-<%= @record.id %>').raty({
-    size: 36,
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    starHalf: '<%= asset_path('star-half.png') %>',
-    half: true,
-    readOnly: true,
-    score: <%= @record.rate %>,
-  });
-  </script>
+<div class="new-record" id="new-record">
+  <div class="new-record＿Box">
+    <div class="container users-title">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="page-title collapse2"><%= @record.comment %></h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <p class="page-title-translate collapse3"><%= @record.created_at.strftime('%m月%d日') %>のトレーニング</p>
+        </div>
+      </div>
+    </div>
 </div>
 
-<% @record.training_records.each do |training_record| %>
-<div class="card card__record">
-    <table class="records-table table table-striped">
-        <thead class="card__record-head">
-            <tr>
-               <th colspan="4">
-                   <%= training_record.name %> <%= link_to '削除', record_path(@record), method: :delete, class: "btn btn-danger btn-sm ml-3" %>
-               </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="col">重量</th>
-                <th scope="col">回数</th>
-                <th scope="col">RM</th>
-            </tr>
-            <% training_record.set_events.each do |set_event| %>
-            <tr>
-                <td><%= set_event.weight %> Kg</td>
-                <td><%= set_event.rep %> 回</td>
-                <td><%= ( (set_event.weight * set_event.rep / 40 ) + set_event.weight) %> Kg</td>
-            </tr>
-            <% end %>
-        </tbody>
-    </table>
+<div class="user__record">
+
+    <%= link_to '一覧に戻る', root_path %>
+
+    <% @record.training_records.each do |training_record| %>
+    <div id="star-rate-<%= @record.id %>"></div>
+              <script>
+              $('#star-rate-<%= @record.id %>').raty({
+                size: 36,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                half: true,
+                readOnly: true,
+                score: <%= @record.rate %>,
+              });
+              </script>
+    <div class="card card__record">
+        <table class="records-table table table-striped">
+            <thead class="card__record-head">
+                <tr>
+                   <th colspan="4">
+                       <%= training_record.name %> <%= link_to '削除', record_path(@record), method: :delete, class: "btn btn-danger btn-sm ml-3" %>
+                   </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="col">重量</th>
+                    <th scope="col">回数</th>
+                    <th scope="col">RM</th>
+                </tr>
+                <% training_record.set_events.each do |set_event| %>
+                <tr>
+                    <td><%= set_event.weight %> Kg</td>
+                    <td><%= set_event.rep %> 回</td>
+                    <td><%= ( (set_event.weight * set_event.rep / 40 ) + set_event.weight) %> Kg</td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+    <% end %>
 </div>
-<% end %>
