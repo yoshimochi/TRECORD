@@ -11,6 +11,15 @@
   </div>
 </div>
 
+<div class="error--message">
+<% if @post.errors.any? %>
+  <%= @post.errors.count %>件のエラーが発生しました
+  <% @post.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+</div>
+
 <%= form_with model: @post, local:true do |f| %>
 <div class="card__post card">
   <div class="card-body">

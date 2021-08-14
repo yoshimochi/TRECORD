@@ -8,8 +8,7 @@ class Public::PostCommentsController < ApplicationController
       redirect_to post_path(post)
     else
       redirect_to post_path(post)
-      flash[:alert] = "コメントに失敗しました"
-    end  
+    end
   end
 
   def destroy

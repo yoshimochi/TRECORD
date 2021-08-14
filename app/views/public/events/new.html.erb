@@ -1,15 +1,24 @@
 <div class="container users-title">
-   <div class="row">
-     <div class="col-12">
-       <h1 class="page-title collapse2">Event</h1>
-     </div>
-   </div>
-   <div class="row">
-     <div class="col-12">
-       <p class="page-title-translate collapse3">種目登録</p>
-     </div>
+ <div class="row">
+   <div class="col-12">
+     <h1 class="page-title collapse2">Event</h1>
    </div>
  </div>
+ <div class="row">
+   <div class="col-12">
+     <p class="page-title-translate collapse3">種目登録</p>
+   </div>
+ </div>
+</div>
+
+<div class="error--message">
+<% if @event.errors.any? %>
+  <%= @event.errors.count %>件のエラーが発生しました
+  <% @event.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+</div>
 
 <div class="container mt-10">
 <%= form_with model: @event, local:true do |f| %>

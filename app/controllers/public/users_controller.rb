@@ -7,7 +7,6 @@ class Public::UsersController < ApplicationController
   end
 
   def mypage
-    @tags = @user.tags.find_by(id: @tag_id)
     redirect_to "/#{current_user.name}"
   end
 
