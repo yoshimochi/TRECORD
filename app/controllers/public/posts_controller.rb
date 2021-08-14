@@ -37,6 +37,7 @@ class Public::PostsController < ApplicationController
   end
 
   private
+
   def set_post
     @posts = Post.order(created_at: "DESC").includes(:user).page(params[:page]).without_count.per(2)
   end
@@ -48,5 +49,4 @@ class Public::PostsController < ApplicationController
   def update_post_params
     params.require(:post).permit(:body, :image)
   end
-
 end

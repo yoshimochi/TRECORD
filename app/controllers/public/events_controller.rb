@@ -1,6 +1,4 @@
 class Public::EventsController < ApplicationController
-
-
   def index
     @event1 = Event.where(genre_id: 1).page(params[:page])
     @event2 = Event.where(genre_id: 2).page(params[:page])
@@ -20,14 +18,13 @@ class Public::EventsController < ApplicationController
     end
   end
 
-
   def show
     @genre = Genre.find(params[:id])
   end
 
   private
+
   def event_params
     params.require(:event).permit(:name, :genre_id)
   end
-
 end
