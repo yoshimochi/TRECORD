@@ -76,6 +76,6 @@ class Public::UsersController < ApplicationController
     if values[:tag_ids].nil?
       values[:tag_ids] = []
     end
-    return values
+    values
   end
 end

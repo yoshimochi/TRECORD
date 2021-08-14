@@ -1,5 +1,4 @@
 class Public::HomesController < ApplicationController
-
   def top
     if user_signed_in?
       @all_records = Record.includes(:user)
@@ -12,5 +11,4 @@ class Public::HomesController < ApplicationController
 
   def about
   end
-
 end

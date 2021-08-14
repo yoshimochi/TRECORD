@@ -8,8 +8,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, uniqueness: true, presence: true
-  validates :is_active, inclusion: {in: [true, false]}
-
+  validates :is_active, inclusion: { in: [true, false] }
 
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -18,7 +17,7 @@ class User < ApplicationRecord
   has_many :user_tags
   has_many :tags, through: :user_tags
 
-   # フォロー側
+  # フォロー側
   has_many :relationships, dependent: :destroy
   has_many :followings, through: :relationships, source: :follower
 
@@ -31,7 +30,6 @@ class User < ApplicationRecord
     return if self == other_user
     relationships.find_or_create_by!(follower: other_user)
   end
-
 
   # フォローの確認
   def following?(user)
@@ -68,5 +66,4 @@ class User < ApplicationRecord
   # def self.dummy_email(auth)
   #   "#{Time.now.strftime('%Y%m%d%H%M%S').to_i}-#{auth.uid}-#{auth.provider}@example.com"
   # end
-
 end

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :admins, controllers: {
-  sessions: 'admins/sessions'
+    sessions: 'admins/sessions',
   }
 
   namespace :admin do
@@ -18,8 +18,8 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, path: "users", controllers: {
-    sessions:      'users/sessions',
-    passwords:     'users/passwords',
+    sessions: 'users/sessions',
+    passwords: 'users/passwords',
     registrations: 'users/registrations',
     # omniauth_callbacks: 'users/omniauth_callbacks'
   }
@@ -45,7 +45,7 @@ Rails.application.routes.draw do
     patch '/:username/widthdraw' => 'users#widthdraw', as: "users_widthdraw"
     resources :relationships, only: [:create, :destroy]
 
-  # 以下のルーティングは常に一番下に
+    # 以下のルーティングは常に一番下に
     get '/mypage' => 'users#mypage'
     get '/:username' => 'users#show'
     get '/:username/edit' => 'users#edit'
@@ -53,5 +53,4 @@ Rails.application.routes.draw do
     get '/:username/follower' => 'users#follower', as: 'follower'
     patch '/:username' => 'users#update'
   end
-
 end

@@ -29,8 +29,16 @@ class Public::RecordsController < ApplicationController
   end
 
   private
+
   def record_params
-    params.require(:record).permit(:comment, :start_time, :rate, training_records_attributes: [:id, :name, :_destroy, set_events_attributes: [:id, :weight, :rep, :_destroy]]).merge(user_id: current_user.id)
+    params.require(:record).permit(
+      :comment, :start_time, :rate,
+      training_records_attributes: [
+        :id, :name, :_destroy,
+        set_events_attributes: [
+          :id, :weight, :rep, :_destroy
+        ]
+      ]
+    ).merge(user_id: current_user.id)
   end
 end
-

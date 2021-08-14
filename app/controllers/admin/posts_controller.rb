@@ -1,6 +1,6 @@
 class Admin::PostsController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def show
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
@@ -24,6 +24,7 @@ class Admin::PostsController < ApplicationController
   end
 
   private
+
   def update_post_params
     params.require(:post).permit(:body, :image)
   end

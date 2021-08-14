@@ -1,6 +1,6 @@
 class Admin::EventsController < ApplicationController
-  
-  
+  before_action :authenticate_admin!
+
   def new
     @event = Event.new
   end
@@ -38,6 +38,7 @@ class Admin::EventsController < ApplicationController
   end
 
   private
+
   def event_params
     params.require(:event).permit(:genre_id, :name)
   end
@@ -45,5 +46,4 @@ class Admin::EventsController < ApplicationController
   def update_event_params
     params.require(:event).permit(:genre_id, :name)
   end
-
 end
