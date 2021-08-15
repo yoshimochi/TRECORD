@@ -3,7 +3,10 @@ class Public::UsersController < ApplicationController
   before_action :set_user, only: [:index, :show]
 
   def index
-    @users = User.where(is_active: 'false')
+    if @users = User.where(is_active: 'false')
+      @users = User.all.order(created_at: :asc).page(params[:page]).per(10)
+    end
+
   end
 
   def mypage

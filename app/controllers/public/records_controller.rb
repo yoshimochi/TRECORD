@@ -10,7 +10,7 @@ class Public::RecordsController < ApplicationController
   def create
     @record = Record.new(record_params)
     if @record.save
-      redirect_to records_path
+      redirect_to record_path(record)
       flash[:notice] = "記録に成功しました"
     else
       render :new

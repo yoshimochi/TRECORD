@@ -4,7 +4,6 @@
 
 .users {
   border-bottom: 1px solid #939597;
-
   .w-2\/5 {
     width: 40%;
   }
@@ -80,4 +79,17 @@
 .search-form {
     margin-bottom: 20px;
     text-align: end;
+}
+
+.users--profile {
+  padding-bottom: 150px;
+  margin-top: 50px;
+}
+
+.users__pagenate {
+  margin: 0 auto;
+  text-align: center;
+  .pagination {
+    display: block;
+  }
 }
