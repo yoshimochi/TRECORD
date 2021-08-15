@@ -95,10 +95,11 @@ ActiveRecord::Schema.define(version: 2021_08_08_045910) do
     t.float "weight", default: 0.0
     t.integer "rep", default: 0
     t.integer "set", default: 0
+    t.integer "event_id"
+    t.integer "user_id"
+    t.integer "record_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "training_record_id"
-    t.string "max"
   end
 
   create_table "tags", force: :cascade do |t|

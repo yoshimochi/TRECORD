@@ -4,7 +4,7 @@
   <%= form_with scope: resource, url: registration_path(resource_name), class: "form-signin", local: true do |f| %>
     <%= render "users/shared/error_messages", resource: resource %>
 
-    <img class="mb-4" src="/assets/trecord.jpg" alt="" width="150" height="150">
+    <%= image_tag 'trecord.jpg', :size => '150x150' %>
       <h1 class="h3 mb-3 font-weight-normal text-center">新規会員登録</h1>
 
     <div class="form-label-group text-left mt-3">
