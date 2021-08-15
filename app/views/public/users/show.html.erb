@@ -17,9 +17,6 @@
   </div>
 </div>
 
-
-
-
 <div class="row py-5 px-4">
     <div class="col-md-5 mx-auto">
         <div class="bg-white shadow rounded overflow-hidden">
@@ -81,18 +78,12 @@
     <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Posts</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Comments</a>
-  </li>
-  <li class="nav-item">
     <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Records</a>
   </li>
 </ul>
 <div class="tab-content" id="pills-tabContent">
   <div class="profile__posts tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
     <%=render 'posts' %>
-  </div>
-  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-
   </div>
   <div class="profile__calender tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
       <%= month_calendar events: @user.records do |date, records| %>
