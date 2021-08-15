@@ -1,7 +1,29 @@
-<h3>投稿編集ページ</h3>
+<div class="container users-title">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="page-title collapse2 animate__animated animate__bounceInDown">Edit Post</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p class="page-title-translate collapse3 animate__animated animate__backInRight">投稿編集</p>
+    </div>
+  </div>
+</div>
+
 <%= form_with model: @post, local:true do |f| %>
-  <%= f.attachment_field :image %>
-  <%= f.label '投稿内容' %>
-  <%= f.text_area :body %>
-  <%= f.submit '変更を保存' %>
-<% end %>
+<div class="card__post card">
+  <div class="card-body">
+    <div class="card-title mb-5">
+      <%= f.attachment_field :image, class: "form-control-file" %>
+    </div>
+    <div class="card-subtitle mb-5">
+       <%= f.label '投稿内容' %>
+        <%= f.text_area :body, class: "form-control" %>
+    </div>
+    <div class="mt-3">
+      <%= f.submit '変更を保存', class: "btn btn-success mr-3" %>
+      <%= link_to '削除する', post_path(@post), method: :delete, class: "btn btn-danger" %>
+    </div>
+  </div>
+  <% end %>

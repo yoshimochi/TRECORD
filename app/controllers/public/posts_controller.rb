@@ -1,4 +1,7 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :show, :edit, :update, :destroy]
+  before_action :set_post, only: [:index]
+
   def new
     @post = Post.new
   end
@@ -6,17 +9,21 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
-    redirect_to posts_path
+    if @post.save
+      redirect_to posts_path
+    else
+      render :new
+    end
   end
 
   def index
-    @posts = Post.page(params[:page]).per(20)
+    @posts = Post.order(created_at: "DESC").includes(:user).page(params[:page]).without_count.per(2)
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.includes(post_comments: :user).find(params[:id])
     @post_comment = PostComment.new
+    @post_comments = PostComment.all
   end
 
   def edit
@@ -30,6 +37,11 @@ class Public::PostsController < ApplicationController
   end
 
   private
+
+  def set_post
+    @posts = Post.order(created_at: "DESC").includes(:user).page(params[:page]).without_count.per(2)
+  end
+
   def post_params
     params.require(:post).permit(:body, :image)
   end
@@ -37,5 +49,4 @@ class Public::PostsController < ApplicationController
   def update_post_params
     params.require(:post).permit(:body, :image)
   end
-
 end

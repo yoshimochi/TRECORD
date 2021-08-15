@@ -1,0 +1,43 @@
+// Place all the styles related to the public/records controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// 一覧画面
+.new-record {
+  padding: 20px;
+  margin: 0 auto;
+  padding-bottom:150px;
+  .error--message {
+    text-align: center;
+  }
+}
+
+.record__field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.record__field--item {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.record__field--set {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.user__record {
+  max-width: 80%;
+  padding: 20px;
+  margin: 0 auto;
+  padding-bottom: 150px;
+  .card__record {
+    font-size: 20px;
+  }
+  .record--btn {
+    text-align: right;
+  }
+}
+

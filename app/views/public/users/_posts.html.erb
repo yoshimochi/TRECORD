@@ -1,0 +1,30 @@
+    <% @user.posts.each do |post| %>
+      <div class="post-container">
+        <div class="block-content collapse5">
+          <h4 id="post-body">
+            <%= post.body %>
+          </h4><br>
+          <ul class="post-details">
+            <li>By <%= post.user.name %>　</li>
+            <li>
+              <% if post.favorites.count == 0 %>
+                <i class="far fa-heart"></i>
+              <% else %>
+                <i class="fas fa-heart" style="color: crimson;"></i>
+              <% end %>
+               <%= post.favorites.count %> いいね
+             </li>
+            <li><i class="far fa-comment-dots"></i>
+            <% if user_signed_in? %>
+              <%= link_to "#{post.post_comments.count}コメント", post_path(post.id) %>
+            <% else %>
+              <%= link_to "#{post.post_comments.count}コメント", admin_post_path(post.id) %>
+            <% end %>
+            </li>
+            <li><i class="far fa-clock"></i> <%= post.created_at.strftime('%Y/%m/%d') %></li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+
+

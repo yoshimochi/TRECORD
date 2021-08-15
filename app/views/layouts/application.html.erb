@@ -5,11 +5,83 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script src="https://kit.fontawesome.com/ac321328b9.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'script.js' %>
+
+
   </head>
 
   <body>
-    <%= yield %>
+    <div class="main">
+      <%= yield %>
+    </div>
+
+  <footer class="footer">
+  <% if user_signed_in? %>
+    <%= link_to  root_path , id: "HomeIcon"  do %>
+      <i class="fas fa-home">Top</i>
+    <% end %>
+    <%= link_to  mypage_path , id: "UserIcon"  do %>
+      <i class="fas fa-user">MyPage</i>
+    <% end %>
+    <%= link_to  users_path , id: "UsersIcon"  do %>
+      <i class="fas fa-users">Users</i>
+    <% end %>
+    <%= link_to posts_path, id: "PostsIcon" do %>
+      <i class="fas fa-clipboard">Posts</i>
+    <% end %>
+    <%= link_to  destroy_user_session_path, id: "SignOutIcon",  method: :delete  do %>
+      <i class="fas fa-sign-out-alt">SignOut</i>
+    <% end %>
+
+  <% elsif admin_signed_in? %>
+    <%= link_to  admin_root_path , id: "HomeIcon"  do %>
+      <i class="fas fa-home">Top</i>
+    <% end %>
+    <%= link_to admin_users_path, id: "UsersIcon"  do %>
+      <i class="fas fa-users">Users</i>
+    <% end %>
+    <%= link_to admin_root_path, id: "PostsIcon" do %>
+      <i class="fas fa-clipboard">Posts</i>
+    <% end %>
+    <%= link_to admin_events_path, id: "EventsIcon" do %>
+      <i class="fas fa-fire-alt">Events</i>
+    <% end %>
+    <%= link_to admin_tags_path, id: "TagsIcon" do %>
+      <i class="fas fa-tags">Tags</i>
+    <% end %>
+    <%= link_to  destroy_admin_session_path, id: "SignOutIcon",  method: :delete  do %>
+      <i class="fas fa-sign-out-alt">SignOut</i>
+    <% end %>
+
+  <% else %>
+    <%= link_to  root_path, id: "HomeIcon" do %>
+      <i class="fas fa-home">Top</i>
+    <% end %>
+    <%= link_to about_path, id: "AboutIcon" do %>
+      <i class="fas fa-book">About</i>
+    <% end %>
+      <%= link_to posts_path, id: "PostsIcon" do %>
+        <i class="fas fa-clipboard">Posts</i>
+      <% end %>
+      <%= link_to new_user_registration_path, id: "SignUpIcon" do %>
+        <i class="fas fa-user-plus">SignUp</i>
+      <% end %>
+      <%= link_to new_user_session_path, id: "SignInIcon" do %>
+        <i class="fas fa-sign-in-alt">SignIn</i>
+      <% end %>
+  <% end %>
+  </footer>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </section>
   </body>
 </html>

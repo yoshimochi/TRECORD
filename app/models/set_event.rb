@@ -1,4 +1,3 @@
 class SetEvent < ApplicationRecord
-  belongs_to :event
-  belongs_to :user
+  belongs_to :training_record
 end

@@ -1,12 +1,24 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!, only: [:mypage, :edit, :update]
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:index, :show]
+
+  def index
+    if @users = User.where(is_active: 'false')
+      @users = User.all.order(created_at: :asc).page(params[:page]).per(10)
+    end
+
+  end
 
   def mypage
     redirect_to "/#{current_user.name}"
   end
 
   def show
+    @training_records = Record.where(params[:training_record])
+    @posts = @user.posts.find_by(id: @post_id)
+    @all_records = Record.includes(:user)
+    @user = User.find_by(name: params[:username])
+    @records = @user.records.where(name: params[:username])
   end
 
   def edit
@@ -24,6 +36,20 @@ class Public::UsersController < ApplicationController
     end
   end
 
+  def following
+    @title = "Following"
+    @user = User.find_by(name: params[:username])
+    @users = @user.followings
+    render 'show_following'
+  end
+
+  def follower
+    @title = "Followers"
+    @user = User.find_by(name: params[:username])
+    @users = @user.followers
+    render 'show_follower'
+  end
+
   def unsubscribe
     @user = current_user
   end
@@ -35,13 +61,24 @@ class Public::UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def search
+    @users = User.search(params[:keyword])
+    @keyword = params[:keyword]
+    render "index"
+  end
+
   private
 
   def set_user
+    @users = User.where(is_active: 'false')
     @user = User.find_by(name: params[:username])
   end
 
   def user_params
-    params.fetch(:user, {}).permit(:name, :profile_image, :introduction)
+    values = params.require(:user).permit(:name, :profile_image, :introduction, tag_ids: [])
+    if values[:tag_ids].nil?
+      values[:tag_ids] = []
+    end
+    values
   end
 end

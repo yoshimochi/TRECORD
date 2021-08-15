@@ -1,7 +1,30 @@
-<h3>
-  TRECODEはトレーニングSNSサイト兼トレーニング記録サイトです。<br />
-  トレーニングの記録やつぶやきを投稿するためには会員登録が必要です。<br />
-  会員登録をしなくても投稿を見ることは可能です。<br />
-  全国のトレーニー達と出会い、自分のトレーニングに生かしたり、モチベーションをアップさせて<br />
-  最高のトレーニングライフを送りましょう！！！
-</h3>
+<section class="about flex flex-col lg:flex-row">
+  <div class="w-full lg:w-1/2">
+    <%= render 'picture' %>
+  </div>
+    <div class="w-full lg:w-1/2 flex flex-col items-center justify-center text-center p-8">
+    <p class="leading-normal mb-4 w-2/3 text-gray-700">
+      <div class="about">
+        <h1 class="page-title animate__animated animate__bounceInDown">About</h1>
+        <p class="page-title-translate animate__animated animate__flipInX">このサイトについて</p>
+          <div class="about-content">
+            <p class="about-text animate__animated animate__flipInX">
+              TRECODEはトレーニングSNSサイト兼トレーニング記録サイトです<br />
+              トレーニングの記録やつぶやきを投稿するためには会員登録が必要です<br />
+              会員登録をしなくても投稿を見ることは可能です
+            </p>
+          </div>
+          <div class="about-content">
+            <h3 class="thema animate__animated animate__flipInX">Thema <span class="about-min-title">テーマ</span></h3>
+
+            <p class="about-text animate__animated animate__flipInX">
+              全国のトレーニー達と出会い<br />
+              自分のトレーニングに活かしたり<br />
+              モチベーションをアップさせて<br />
+              最高のトレーニングライフを送りましょう
+            </p>
+          </div>
+      </div>
+    </p>
+  </div>
+</section>

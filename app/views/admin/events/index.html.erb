@@ -1,0 +1,62 @@
+<div class="container users-title">
+   <div class="row">
+     <div class="col-12">
+       <h1 class="page-title collapse2">Events</h1>
+     </div>
+   </div>
+   <div class="row">
+     <div class="col-12">
+       <p class="page-title-translate collapse3">種目一覧</p>
+     </div>
+   </div>
+ </div>
+
+<h2></h2>
+
+<div class="events">
+
+
+ <div class="card">
+ <div class="card-header">
+  <%= link_to new_admin_event_path do %>
+   <i class="fas fa-plus-circle fa-2x fa-pull-right"></i>
+  <% end %>
+ </div>
+  <div id="event_lists">
+   <div class="card-header">
+    <%= link_to '上半身', admin_genres_path %>&emsp; &emsp;
+    <%= link_to_next_page @event1, 'もっと見る', remote: true, id: 'view_more' %>
+   </div>
+   <ul class="list-group list-group-flush">
+    <%= render partial: 'public/events/form_event1' %>
+   </ul>
+  </div>
+ </div>
+
+
+ <div class="card">
+  <div id="event_lists">
+   <div class="card-header">
+    <%= link_to '下半身', admin_genres_path %>&emsp; &emsp;
+    <%= link_to_next_page @event2, 'もっと見る', remote: true, id: 'view_more' %>
+   </div>
+   <ul class="list-group list-group-flush">
+    <%= render partial: 'public/events/form_event2' %>
+   </ul>
+  </div>
+ </div>
+
+
+ <div class="card">
+  <div id="event_lists">
+   <div class="card-header">
+    <%= link_to '体幹', admin_genres_path %>&emsp; &emsp;
+    <%= link_to_next_page @event3, 'もっと見る', remote: true, id: 'view_more' %>
+   </div>
+   <ul class="list-group list-group-flush">
+    <%= render partial: 'public/events/form_event3' %>
+   </ul>
+  </div>
+ </div>
+
+</div>

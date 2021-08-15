@@ -1,0 +1,70 @@
+<div class="container users-title">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="page-title">Edit</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p class="page-title-translate">登録情報編集</p>
+    </div>
+  </div>
+</div>
+
+
+<%= form_with model: [:admin, @user], local:true do |f| %>
+<div class="container">
+  <div class="row profile__edit">
+    <div class="col">
+      <div class="form-group">
+        <%= f.label 'プロフィール画像', class: "exampleFormControlFile1" %>
+        <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "form-control-file" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :tag_ids, "タグ機能" %><br/>
+        <span>
+          <% Tag.all.each do |tag| %>
+            <%= f.check_box :tag_ids, { multiple: true, checked: @user.tags.find_by(id: tag.id).present?, include_hidden: false } ,tag[:id] %>
+            <label class="form^check-label">
+              <%= tag.name %>
+            </label>
+          <% end %>
+        </span>
+      </div>
+
+      <div class="form-group">
+        <%= f.label 'Name' %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label 'E-mail' %>
+        <%= f.text_field :email, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label 'About' %>
+        <%= f.text_area :introduction, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label 'ステータス' %>
+        <div class="form-check form-check-inline">
+          <%= f.radio_button :is_active, :false, class: "form-check-input" %>
+          <%= f.label :is_active, "有効", value: :false, class: "form-check-label" %>
+        </div>
+        <div class="form-check form-check-inline">
+          <%= f.radio_button :is_active, :true, class: "form-check-input" %>
+          <%= f.label :is_active, "退会", value: :true, class: "form-check-label" %>
+        </div>
+      </div>
+
+      <div class="profile__edit--btn">
+        <%= f.submit '変更を保存', class: "btn btn-success mb-2 w-25" %>
+      </div>
+
+    </div>
+  </div>
+</div>
+<% end %>

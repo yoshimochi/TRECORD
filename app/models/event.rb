@@ -1,4 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :genre
-  has_many :set_events, dependent: :destroy
+
+  validates :name, presence: true, uniqueness: true
+  paginates_per 6
 end

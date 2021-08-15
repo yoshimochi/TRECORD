@@ -1,3 +1,14 @@
 // Place all the styles related to the admin/genres controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.genre__new {
+  margin: 10px auto;
+  text-align: center;
+}
+
+.genre--item {
+  max-width: 450px;
+  margin: 10px auto;
+}

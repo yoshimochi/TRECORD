@@ -48,6 +48,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rubocop-airbnb'
 end
 
 group :test do
@@ -56,17 +57,34 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  gem 'rspec-rails'
+  gem "factory_bot_rails"
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+gem 'font-awesome-sass'
 gem 'devise'
+gem 'pry-rails'
+gem 'safe_attributes'
 
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 
-gem 'dotenv-rails'
 
-gem 'kaminari'
+gem 'kaminari', '~> 1.2.1'
 gem 'jquery-rails'
+gem 'jquery-turbolinks'
+gem 'bootstrap', '~> 4.5'
+
+gem 'cocoon'
+
+gem 'simple_calendar', '~>2.0'
+gem 'rails-i18n', '~> 5.1'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end

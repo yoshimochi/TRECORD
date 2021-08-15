@@ -1,0 +1,24 @@
+<div class="card nested-fields menus record__field-menu">
+  <div class="card-body">
+    <%= f.hidden_field :id %>
+    <div class="card-title">
+      <%= f.collection_select :name, Event.all, :name, :name, prompt: "種目名を選択", class: 'form-control form-control-lg'%>
+      <%= link_to_remove_association '削除', f, class: 'btn btn-danger btn-sm p-0' %>
+    </div>
+
+    <%= link_to_add_association 'セット追加', f, :set_events,
+      class: 'btn btn-success p-0 mb-3',
+      data: {
+        data_association_insertion_traversal: 'closest',
+        association_insertion_method: 'append' }
+      %>
+
+
+    <div>
+      <%= f.fields_for :set_events do |set_event| %>
+        <%= render 'set_event_fields', f: set_event %>
+      <% end %>
+    </div>
+
+  </div>
+</div>

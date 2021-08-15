@@ -1,0 +1,83 @@
+<div class="row py-5 px-4">
+    <div class="col-md-5 mx-auto">
+        <div class="bg-white shadow rounded overflow-hidden">
+            <div class="px-4 pt-0 pb-4 cover">
+                <div class="media align-items-end profile-head">
+                    <div class="profile mr-3 mt-3">
+                      <%= attachment_image_tag @user, :profile_image, fallback: "no_image.png", size: "130x85", class: "rounded mb-2 img-thumbnail" %>
+                      <p class="profile__name"><%= @user.name %></p>
+                        <%= link_to "プロフィール編集", edit_admin_user_path(@user), class: "btn btn-outline-dark btn-sm btn-block" %>
+                    </div>
+                    <div class="media-body mb-5 text-white">
+                        <h4 class="mt-0 mb-0"><%= @user.name %></h4>
+                        <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2">
+                          <% @user.tags.each do |tag| %>
+                            <%= tag.name %>
+                          <% end %>
+                        </i>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-light p-4 d-flex justify-content-end text-center">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block">
+                          <%= @user.posts.count %>
+                        </h5><small class="text-muted"> <i class="fas fa-image mr-1"></i>Posts</small>
+                    </li>
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block">
+                          <%= link_to admin_user_following_path(@user) do %>
+                            <%= @user.followers.count %>
+                          <% end %>
+                        </h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Followers</small>
+                    </li>
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block">
+                          <%= link_to admin_user_follower_path(@user) do %>
+                            <%= @user.followings.count %>
+                          <% end %>
+                        </h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Following</small>
+                    </li>
+                </ul>
+            </div>
+            <div class="px-4 py-3">
+                <h5 class="mb-0">About</h5>
+                <div class="p-4 rounded shadow-sm bg-light">
+                    <p class="font-italic mb-0"><%= @user.introduction %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ul class="profile__nav nav nav-tabs mb-3">
+  <li class="nav-item">
+    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Posts</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Comments</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Records</a>
+  </li>
+</ul>
+<div class="tab-content" id="pills-tabContent">
+  <div class="profile__posts tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+    <%=render partial: "public/posts/posts" %>
+  </div>
+  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+
+  </div>
+  <div class="profile__calender tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+      <%= month_calendar events: @user.records do |date, records| %>
+          <%= date.day %>
+          <% records.each do |record| %>
+            <%= link_to record_path(record) do %>
+              <%= record.comment %>
+            <% end %>
+          <% end %>
+    <% end %>
+  </div>
+</div>
