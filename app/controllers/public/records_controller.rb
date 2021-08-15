@@ -18,11 +18,11 @@ class Public::RecordsController < ApplicationController
     end
   end
 
-  def index
-    @all_records = Record.includes(:user)
-    @user = User.find(current_user.id)
-    @records = Record.where(user_id: current_user.id)
-  end
+  # def index
+  #   @all_records = Record.includes(:user)
+  #   @user = User.find(current_user.id)
+  #   @records = Record.where(user_id: current_user.id)
+  # end
 
   def show
     @record = Record.find(params[:id])
