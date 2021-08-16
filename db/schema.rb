@@ -100,8 +100,15 @@ ActiveRecord::Schema.define(version: 2021_08_16_170113) do
     t.datetime "updated_at", null: false
   end
 
-# Could not dump table "training_records" because of following StandardError
-#   Unknown type '' for column 'weight'
+  create_table "training_records", force: :cascade do |t|
+    t.integer "user_id"
+    t.float "weight"
+    t.integer "rep"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "record_id"
+    t.string "name"
+  end
 
   create_table "user_tags", force: :cascade do |t|
     t.integer "tag_id", null: false
