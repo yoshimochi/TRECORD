@@ -6,8 +6,7 @@ class Public::UsersController < ApplicationController
     if @users = User.where(is_active: 'false')
       @users = User.all.order(created_at: :asc).page(params[:page]).per(10)
     end
-
-  end
+  end  
 
   def mypage
     redirect_to "/#{current_user.name}"
@@ -79,6 +78,6 @@ class Public::UsersController < ApplicationController
     if values[:tag_ids].nil?
       values[:tag_ids] = []
     end
-    values
+    return values
   end
 end
