@@ -10,19 +10,13 @@ class Public::RecordsController < ApplicationController
   def create
     @record = Record.new(record_params)
     if @record.save
-      redirect_to record_path(record)
+      redirect_to record_path(@record)
       flash[:notice] = "記録に成功しました"
     else
       render :new
       flash[:danger] = "記録に失敗しました"
     end
   end
-
-  # def index
-  #   @all_records = Record.includes(:user)
-  #   @user = User.find(current_user.id)
-  #   @records = Record.where(user_id: current_user.id)
-  # end
 
   def show
     @record = Record.find(params[:id])
@@ -41,4 +35,5 @@ class Public::RecordsController < ApplicationController
       ]
     ).merge(user_id: current_user.id)
   end
+
 end

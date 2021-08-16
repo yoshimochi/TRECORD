@@ -1,4 +1,5 @@
 class Public::RelationshipsController < ApplicationController
+  
   def create
     @other_user = User.find(params[:follower])
     current_user.follow(@other_user)
@@ -10,4 +11,5 @@ class Public::RelationshipsController < ApplicationController
     current_user.unfollow(params[:id])
     redirect_to request.referer
   end
+  
 end

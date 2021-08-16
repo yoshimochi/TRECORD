@@ -12,9 +12,9 @@
  </div>
 
 <div class="user__follow my-3 p-3 bg-white rounded shadow-sm">
-  <div class="media text-muted pt-3">
   <% if @users.any? %>
     <% @users.each do |user| %>
+    <div class="media text-muted pt-3">
       <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg",width: "48", height: "48", class: "mr-2 rounded" %>
       <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
         <div class="d-flex justify-content-between align-items-center w-100">
@@ -37,10 +37,10 @@
           <%= link_to "/#{user.name}" do %>
             <%= user.posts.count %> Post
           <% end %>
-          <%= link_to following_path("#{user.name}") do %>
+          <%= link_to follower_path("#{user.name}") do %>
             <%= user.followers.count %> Follower
           <% end %>
-          <%= link_to follower_path("#{user.name}") do %>
+          <%= link_to following_path("#{user.name}") do %>
             <%= user.followings.count %> Following
           <% end %>
         </span>
@@ -48,6 +48,7 @@
           <%= user.introduction %>
         </span>
       </div>
+    </div>
     <% end %>
   <% end %>
-  </div>
+</div>

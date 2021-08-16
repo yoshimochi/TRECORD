@@ -28,6 +28,15 @@
                       <% if user_signed_in? && @user == current_user %>
                         <%= link_to "プロフィール編集", "/#{current_user.name}/edit", class: "btn btn-outline-dark btn-sm btn-block" %>
                       <% end %>
+                      <div class="follow-button">
+                      <% if logged_in? && current_user != @user %>
+                        <% if current_user.following?(@user) %>
+                          <%= button_to 'フォロー解除', relationship_path(current_user.relationships.find_by(follower: @user)), method: :delete, class: "btn btn-primary" %>
+                        <% else %>
+                          <%= button_to 'フォロー', relationships_path(follower: @user), class: "btn btn-outline-primary" %>
+                        <% end %>
+                      <% end %>
+                      </div>
                     </div>
                     <div class="media-body mb-5 text-white">
                         <h4 class="mt-0 mb-0"><%= @user.name %></h4>
@@ -49,14 +58,14 @@
                     </li>
                     <li class="list-inline-item">
                         <h5 class="font-weight-bold mb-0 d-block">
-                          <%= link_to following_path("#{@user.name}") do %>
+                          <%= link_to follower_path("#{@user.name}") do %>
                             <%= @user.followers.count %>
                           <% end %>
                         </h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Followers</small>
                     </li>
                     <li class="list-inline-item">
                         <h5 class="font-weight-bold mb-0 d-block">
-                          <%= link_to follower_path("#{@user.name}") do %>
+                          <%= link_to following_path("#{@user.name}") do %>
                             <%= @user.followings.count %>
                           <% end %>
                         </h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Following</small>
