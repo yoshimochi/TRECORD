@@ -3,7 +3,7 @@
 <div class="user--signin">
 
   <%= form_with model: @user, url: user_session_path, class: "form-signin", local:true do |f| %>
-  <img class="mb-4" src="/assets/trecord.jpg" alt="" width="150" height="150">
+    <%= image_tag 'trecord.jpg', :size => '150x150' %>
     <h1 class="h3 mb-3 font-weight-normal text-center">Please Sign In</h1>
       <%= f.label 'メールアドレス', class: "sr-only" %><br />
       <%= f.email_field :email, autofocus: true, placeholder: "Email address", autocomplete: "email", class: "form-control" %>

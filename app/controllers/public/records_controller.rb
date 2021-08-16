@@ -4,7 +4,6 @@ class Public::RecordsController < ApplicationController
   def new
     @record = Record.new
     @training_record = @record.training_records.build
-    @set_event = @training_record.set_events.build
   end
 
   def create
