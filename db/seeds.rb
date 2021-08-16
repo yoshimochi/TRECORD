@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create!(
-   email: 'admin@test.com',
-   password: 'password'
- )
+    email: 'admin@test.com',
+    password: 'password'
+  )
 
  User.create(
     [
@@ -21,36 +21,50 @@ Admin.create!(
     ]
   )
 
+  Genre.create(
+    [
+      { name: "上半身" },
+      { name: "下半身" },
+      { name: "体幹" },
+      ]
+  )
+
   Event.create(
     [
-        {name: "ベンチプレス ", genre_id: 1},
-        {name: "インクラインプレス", genre_id: 1},
-        {name: "ダンベルプレス", genre_id: 1 },
-        {name: "ダンベルフライ", genre_id: 1},
-        {name: "ケーブル・クロスオーバー", genre_id: 1},
-        {name: "チンニング", genre_id: 1},
-        {name: "ベントオーバーロウ", genre_id: 1},
-        {name: "ペクトラルフライ", genre_id: 1},
-        {name: "スクワット", genre_id: 2},
-        {name: "デッドリフト", genre_id: 2},
-        {name: "スモウ・デッドリフト", genre_id: 2},
-        {name: "レッグエクステンション", genre_id: 2},
-        {name: "レッグカール", genre_id: 2},
-        {name: "レッグプレス", genre_id: 2},
-        {name: "ハックスクワット", genre_id: 2},
-        {name: "カーフ・レイズ", genre_id: 2},
-        {name: "バーベルカール", genre_id: 1},
-        {name: "ダンベルカール", genre_id: 1},
-        {name: "トライセプスプレスダウン", genre_id: 1},
-        {name: "トライセプス・エクステンション", genre_id: 1},
-        {name: "サイドレイズ", genre_id: 1},
-        {name: "ダンベル・ショルダープレス", genre_id: 1},
-        {name: "バーベル・ショルダープレス", genre_id: 1},
-        {name: "スミスマシン・ショルダープレス"},
-        {name: "クランチ", genre_id: 3},
-        {name: "シットアップ", genre_id: 3},
-        {name: "レッグレイズ", genre_id: 3},
-        {name: "アブローラー", genre_id: 3},
-        {name: "ハンギングレッグレイズ", genre_id: 3}
-    ]
-)
+      { name: "ベンチプレス", genre_id: 1 },
+      { name: "インクラインバープレス", genre_id: 1 },
+      { name: "ダンベルプレス", genre_id: 1 },
+      { name: "ダンベルフライ", genre_id: 1 },
+      { name: "チェストプレス", genre_id: 1 },
+      { name: "ラットプルダウン", genre_id: 1 },
+      { name: "ロープーリー", genre_id: 1 },
+      { name: "チンニング", genre_id: 1 },
+      { name: "ベントオーバーローイング", genre_id: 1 },
+      { name: "バーベルカール", genre_id: 1 },
+      { name: "ダンベルカール", genre_id: 1 },
+      { name: "ハンマーカール", genre_id: 1 },
+      { name: "トライセップスプレスダウン", genre_id: 1 },
+      { name: "ショルダープレス", genre_id: 1 },
+      { name: "オーバーヘッドプレス", genre_id: 1 },
+      { name: "サイドレイズ", genre_id: 1 },
+      { name: "デッドリフト", genre_id: 2 },
+      { name: "スクワット", genre_id: 2 },
+      { name: "ランジ", genre_id: 2 },
+      { name: "レッグプレス", genre_id: 2 },
+      { name: "レッグカール", genre_id: 2 },
+      { name: "レッグエクステンション", genre_id: 2 },
+      { name: "カーフレイズ", genre_id: 2 },
+      { name: "クランチ", genre_id: 3 },
+      { name: "レッグレイズ", genre_id: 3 },
+      { name: "ハンギングレッグレイズ", genre_id: 3 }
+      ]
+  )
+
+  Tag.create(
+    [
+      { name: "ビギナー" },
+      { name: "トレーニー" },
+      { name: "ダイエッター" },
+      { name: "フィジーカー" }
+      ]
+  )

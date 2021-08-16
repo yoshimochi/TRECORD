@@ -17,7 +17,7 @@ class User < ApplicationRecord
   has_many :user_tags
   has_many :tags, through: :user_tags
 
-  # フォロー側
+   # フォロー側
   has_many :relationships, dependent: :destroy
   has_many :followings, through: :relationships, source: :follower
 
@@ -31,6 +31,7 @@ class User < ApplicationRecord
     relationships.find_or_create_by!(follower: other_user)
   end
 
+
   # フォローの確認
   def following?(user)
     followings.include?(user)
@@ -39,10 +40,6 @@ class User < ApplicationRecord
   # フォローの解除
   def unfollow(relathinoship_id)
     relationships.find(relathinoship_id).destroy!
-  end
-
-  def active_for_authentication?
-    super && (is_active == false)
   end
 
   def self.search(keyword)
