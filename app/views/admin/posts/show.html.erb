@@ -1,12 +1,12 @@
 <div class="container users-title">
   <div class="row">
     <div class="col-12">
-      <h1 class="page-title collapse2 animate__animated animate__bounceInDown">Post</h1>
+      <h1 class="page-title collapse2">Post</h1>
     </div>
   </div>
   <div class="row">
     <div class="col-12">
-      <p class="page-title-translate collapse3 animate__animated animate__backInRight"><%= @post.user.name %>さんの投稿</p>
+      <p class="page-title-translate collapse3"><%= @post.user.name %>さんの投稿</p>
     </div>
   </div>
 </div>
@@ -27,7 +27,7 @@
           <%= link_to "#{@post.post_comments.count}コメント", admin_post_path(@post.id) %>
         </li>
         <li><i class="far fa-clock"></i> <%= @post.created_at.strftime('%Y/%m/%d') %></li>
-        <li><%= link_to '編集', edit_admin_post_path(@post), class: "btn btn-primary" %></li>
+        <li><%= link_to '編集', edit_admin_post_path(@post), class: "btn btn-primary btn-sm" %></li>
       </ul>
     </h4>
   </div>

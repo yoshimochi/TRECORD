@@ -35,10 +35,10 @@
 
 
  <div class="card">
-  <div id="event_lists">
+  <div id="event__lists">
    <div class="card-header">
     <%= link_to '下半身', admin_genres_path %>&emsp; &emsp;
-    <%= link_to_next_page @event2, 'もっと見る', remote: true, id: 'view_more' %>
+    <%= link_to_next_page @event2, 'もっと見る', remote: true, id: 'view__more' %>
    </div>
    <ul class="list-group list-group-flush">
     <%= render partial: 'public/events/form_event2' %>
