@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_16_143453) do
+ActiveRecord::Schema.define(version: 2021_08_16_170113) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -90,6 +90,8 @@ ActiveRecord::Schema.define(version: 2021_08_16_143453) do
     t.integer "record_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "training_record_id"
+    t.string "max"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -98,13 +100,8 @@ ActiveRecord::Schema.define(version: 2021_08_16_143453) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "training_records", force: :cascade do |t|
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "record_id"
-    t.string "name"
-  end
+# Could not dump table "training_records" because of following StandardError
+#   Unknown type '' for column 'weight'
 
   create_table "user_tags", force: :cascade do |t|
     t.integer "tag_id", null: false
