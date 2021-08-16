@@ -102,6 +102,8 @@ ActiveRecord::Schema.define(version: 2021_08_16_172017) do
 
   create_table "training_records", force: :cascade do |t|
     t.integer "user_id"
+    t.float "weight"
+    t.integer "rep"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "record_id"
