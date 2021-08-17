@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_16_172017) do
+ActiveRecord::Schema.define(version: 2021_08_02_054728) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,8 +27,6 @@ ActiveRecord::Schema.define(version: 2021_08_16_172017) do
   create_table "events", force: :cascade do |t|
     t.integer "genre_id", null: false
     t.text "name", null: false
-    t.float "weight"
-    t.integer "repetition"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -64,34 +62,26 @@ ActiveRecord::Schema.define(version: 2021_08_16_172017) do
 
   create_table "records", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.string "comment", null: false
+    t.datetime "start_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "rate"
-    t.string "comment"
-    t.datetime "start_time"
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.integer "user_id"
     t.integer "follower_id"
+    t.integer "followed_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["follower_id"], name: "index_relationships_on_follower_id"
-    t.index ["user_id", "follower_id"], name: "index_relationships_on_user_id_and_follower_id", unique: true
-    t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
   create_table "set_events", force: :cascade do |t|
     t.float "weight", default: 0.0
     t.integer "rep", default: 0
     t.integer "set", default: 0
-    t.integer "event_id"
-    t.integer "user_id"
-    t.integer "record_id"
+    t.integer "training_record_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "training_record_id"
-    t.string "max"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -101,13 +91,10 @@ ActiveRecord::Schema.define(version: 2021_08_16_172017) do
   end
 
   create_table "training_records", force: :cascade do |t|
-    t.integer "user_id"
-    t.float "weight"
-    t.integer "rep"
+    t.integer "record_id", null: false
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "record_id"
-    t.string "name"
   end
 
   create_table "user_tags", force: :cascade do |t|
@@ -129,8 +116,6 @@ ActiveRecord::Schema.define(version: 2021_08_16_172017) do
     t.text "introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "uid"
-    t.string "provider"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
