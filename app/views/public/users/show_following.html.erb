@@ -25,10 +25,16 @@
           </strong>
           <div class="follow-button">
           <% if logged_in? && current_user != @user %>
-            <% if current_user.following?(@user) %>
-              <%= button_to 'フォロー解除', relationship_path(current_user.relationships.find_by(follower: @user)), method: :delete, class: "btn btn-primary" %>
+            <% if current_user.following?(user) %>
+              <%= form_for(current_user.active_relationships.find_by(followed_id: user.id),
+                           html: { method: :delete }) do |f| %>
+                <%= f.submit "フォローをやめる", class: "btn btn-danger" %>
+              <% end %>
             <% else %>
-              <%= button_to 'フォロー', relationships_path(follower: @user), class: "btn btn-outline-primary" %>
+              <%= form_for(current_user.active_relationships.build) do |f| %>
+                <div><%= hidden_field_tag :followed_id, user.id %></div>
+                <%= f.submit "フォローする", class: "btn btn-primary" %>
+              <% end %>
             <% end %>
           <% end %>
           </div>
@@ -41,7 +47,7 @@
             <%= user.followers.count %> Follower
           <% end %>
           <%= link_to following_path("#{user.name}") do %>
-            <%= user.followings.count %> Following
+            <%= user.following.count %> Following
           <% end %>
         </span>
         <span class="d-block">

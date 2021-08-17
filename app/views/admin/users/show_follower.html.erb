@@ -26,14 +26,14 @@
           </strong>
         </div>
         <span class="d-block">
-          <%= link_to "/#{user.name}" do %>
+          <%= link_to admin_user_path(user) do %>
             <%= user.posts.count %> Post
           <% end %>
-          <%= link_to admin_user_following_path(@user) do %>
+          <%= link_to admin_user_follower_path(user) do %>
             <%= user.followers.count %> Follower
           <% end %>
-          <%= link_to admin_user_follower_path(@user) do %>
-            <%= user.followings.count %> Following
+          <%= link_to admin_user_following_path(user) do %>
+            <%= user.following.count %> Following
           <% end %>
         </span>
         <span class="d-block">

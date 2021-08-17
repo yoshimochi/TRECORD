@@ -17,50 +17,34 @@ class User < ApplicationRecord
   has_many :user_tags
   has_many :tags, through: :user_tags
 
-   # フォロー側
-  has_many :relationships, dependent: :destroy
-  has_many :followings, through: :relationships, source: :follower
-
-  # フォロワー側
-  has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
-  has_many :followers, through: :passive_relationships, source: :user
-
   # フォローする
+  has_many :active_relationships, class_name:  "Relationship",
+                                  foreign_key: "follower_id",
+                                  dependent:   :destroy
+  has_many :following, through: :active_relationships, source: :followed
+  
+  # フォローされる
+  has_many :passive_relationships, class_name:  "Relationship",
+                                   foreign_key: "followed_id",
+                                   dependent:   :destroy
+  has_many :followers, through: :passive_relationships, source: :follower
+  
   def follow(other_user)
-    return if self == other_user
-    relationships.find_or_create_by!(follower: other_user)
+    following << other_user
   end
 
-
-  # フォローの確認
-  def following?(user)
-    followings.include?(user)
+  # ユーザーをフォロー解除する
+  def unfollow(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
   end
 
-  # フォローの解除
-  def unfollow(relathinoship_id)
-    relationships.find(relathinoship_id).destroy!
+  # 現在のユーザーがフォローしてたらtrueを返す
+  def following?(other_user)
+    following.include?(other_user)
   end
 
   def self.search(keyword)
     where(["name like? OR introduction like?", "%#{keyword}%", "%#{keyword}%"])
   end
 
-  # twitter_api
-  # def self.find_for_oauth(auth)
-  #   user = User.find_by(uid: auth.uid, provider: auth.provider)
-
-  #   user ||= User.create!(
-  #     uid: auth.uid,
-  #     provider: auth.provider,
-  #     name: auth[:info][:name],
-  #     email: User.dummy_email(auth),
-  #     password: Devise.friendly_token[0, 20]
-  #   )
-  #   user
-  # end
-
-  # def self.dummy_email(auth)
-  #   "#{Time.now.strftime('%Y%m%d%H%M%S').to_i}-#{auth.uid}-#{auth.provider}@example.com"
-  # end
 end
