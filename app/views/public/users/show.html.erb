@@ -28,18 +28,18 @@
                       <% if user_signed_in? && @user == current_user %>
                         <%= link_to "プロフィール編集", "/#{current_user.name}/edit", class: "btn btn-outline-dark btn-sm btn-block" %>
                       <% end %>
-                      <div class="follow-button">
-                     <% if current_user.following?(user) %>
-                      <%= form_for(current_user.active_relationships.find_by(followed_id: user.id),
-                                   html: { method: :delete }) do |f| %>
-                        <%= f.submit "フォローをやめる", class: "btn btn-danger" %>
+                      <div class="follow-button mt-3">
+                       <% if current_user.following?(@user) %>
+                        <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
+                                     html: { method: :delete }) do |f| %>
+                          <%= f.submit "フォローをやめる", class: "btn btn-danger" %>
+                        <% end %>
+                      <% else %>
+                        <%= form_for(current_user.active_relationships.build) do |f| %>
+                          <div><%= hidden_field_tag :followed_id, @user.id %></div>
+                          <%= f.submit "フォローする", class: "btn btn-primary" %>
+                        <% end %>
                       <% end %>
-                    <% else %>
-                      <%= form_for(current_user.active_relationships.build) do |f| %>
-                        <div><%= hidden_field_tag :followed_id, user.id %></div>
-                        <%= f.submit "フォローする", class: "btn btn-primary" %>
-                      <% end %>
-                    <% end %>
                       </div>
                     </div>
                     <div class="media-body mb-5 text-white">
