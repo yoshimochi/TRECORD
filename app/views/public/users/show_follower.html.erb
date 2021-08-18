@@ -16,7 +16,7 @@
   <% if @users.any? %>
     <% @users.each do |user| %>
     <div class="media text-muted pt-3">
-      <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg",width: "48", height: "48", class: "mr-2 rounded" %>
+      <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg",width: "48", height: "48", class: "mr-2 rounded" %>
       <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
         <div class="d-flex justify-content-between align-items-center w-100">
           <strong class="text-gray-dark">
@@ -25,21 +25,8 @@
             <% end %>
           </strong>
           <div class="follow-button">
-          <% if logged_in? && current_user != @user %>
-            <% if current_user.following?(user) %>
-              <%= form_for(current_user.active_relationships.find_by(followed_id: user.id),
-                           html: { method: :delete }) do |f| %>
-                <%= f.submit "フォローをやめる", class: "btn btn-danger" %>
-              <% end %>
-            <% else %>
-              <%= form_for(current_user.active_relationships.build) do |f| %>
-                <div><%= hidden_field_tag :followed_id, user.id %></div>
-                <%= f.submit "フォローする", class: "btn btn-primary" %>
-              <% end %>
-            <% end %>
-          <% elsif logged_in? && current_user == @user %>
 
-          <% end %>
+
           </div>
         </div>
         <span class="d-block">

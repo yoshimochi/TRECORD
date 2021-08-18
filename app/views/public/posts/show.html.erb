@@ -20,7 +20,8 @@
 <% end %>
 </div>
 
-<div class="card__posts card">
+<div class="posts">
+  <div class="card__posts card">
   <%= attachment_image_tag @post, :image, fallcack: "no_image.jpg", class: "card-img-top" %>
   <div class="card-body">
     <p class="card-title">
@@ -62,7 +63,7 @@
     <table class="table table-hover ">
       <tr>
         <th>
-          <%= attachment_image_tag @post.user, :profile_image %>  <%= post_comment.user.name %>
+          <%= attachment_image_tag post_comment.user, :profile_image, size: "40x40" %>  <%= post_comment.user.name %>
         </th>
         <th class="text-center"><%= post_comment.comment %></th>
         <th class="text-right">
@@ -82,6 +83,7 @@
       </div>
     <% end %>
   </div>
+</div>
 </div>
 
 
