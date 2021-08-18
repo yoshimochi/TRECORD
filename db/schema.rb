@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 2021_08_02_054728) do
     t.float "weight", default: 0.0
     t.integer "rep", default: 0
     t.integer "set", default: 0
+    t.float ""
     t.integer "training_record_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
