@@ -32,7 +32,7 @@ https://drive.google.com/file/d/1ndJFeA24Zvqvwb_-bHZRVB1ShamoWQYN/view?usp=shari
 https://drive.google.com/file/d/14y2t8lRRFInTRHRIacJ_XzhO1nPr19_9/view?usp=sharing
 
 ### ER図
-https://drive.google.com/file/d/1LZNYB1IGynndaM9WN2AYUASIaDPq9kqz/view?usp=sharing
+https://drive.google.com/file/d/1NSQXYiyjWdgpxQidWxcfo_SoVCG_TN27/view?usp=sharing
 
 ### テーブル定義書
 https://docs.google.com/spreadsheets/d/1BZhGuPaNBBxFlH1_xoRTJbbX-Av899tT8Q-75Bz0uok/edit?usp=sharing

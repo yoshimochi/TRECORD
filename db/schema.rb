@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2021_08_02_054728) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "image_id"
+    t.string "image_id"
     t.text "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 2021_08_02_054728) do
     t.datetime "remember_created_at"
     t.string "name", null: false
     t.boolean "is_active", default: false, null: false
-    t.integer "profile_image_id"
+    t.string "profile_image_id"
     t.text "introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

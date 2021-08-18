@@ -30,7 +30,7 @@
       <div class="flex items-start w-2/5">
         <div class="w-10 h-10 rounded mr-3">
           <div class="rounded-full h-10 w-10 bg-gray-300 m-auto">
-            <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg",width: "48", height: "48" %>
+            <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg",  format: 'jpeg', size: '48x48' %>
           </div>
         </div>
         <div class="flex-1 overflow-hidden">
