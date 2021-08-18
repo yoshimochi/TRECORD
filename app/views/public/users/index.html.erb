@@ -56,6 +56,7 @@
       </div>
       <p class="w-2/5"><%= user.introduction %></p>
       <label for="status" class="font-bold w-1/5 text-right">
+      <% unless current_user?(user) %>
         <% if current_user.following?(user) %>
           <%= form_for(current_user.active_relationships.find_by(followed_id: user.id),
                        html: { method: :delete }) do |f| %>
@@ -67,6 +68,7 @@
             <%= f.submit "フォローする", class: "btn btn-primary" %>
           <% end %>
         <% end %>
+      <% end %>
       </label>
     </li>
   </ul>
