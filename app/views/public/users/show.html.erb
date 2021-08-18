@@ -29,15 +29,17 @@
                         <%= link_to "プロフィール編集", "/#{current_user.name}/edit", class: "btn btn-outline-dark btn-sm btn-block" %>
                       <% end %>
                       <div class="follow-button mt-3">
-                       <% if current_user.following?(@user) %>
-                        <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
-                                     html: { method: :delete }) do |f| %>
-                          <%= f.submit "フォローをやめる", class: "btn btn-danger" %>
-                        <% end %>
-                      <% else %>
-                        <%= form_for(current_user.active_relationships.build) do |f| %>
-                          <div><%= hidden_field_tag :followed_id, @user.id %></div>
-                          <%= f.submit "フォローする", class: "btn btn-primary" %>
+                      <% unless current_user?(@user) %>
+                        <% if current_user.following?(@user) %>
+                          <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
+                                       html: { method: :delete }) do |f| %>
+                            <%= f.submit "フォローをやめる", class: "btn btn-danger" %>
+                          <% end %>
+                        <% else %>
+                          <%= form_for(current_user.active_relationships.build) do |f| %>
+                            <div><%= hidden_field_tag :followed_id, @user.id %></div>
+                            <%= f.submit "フォローする", class: "btn btn-primary" %>
+                          <% end %>
                         <% end %>
                       <% end %>
                       </div>
