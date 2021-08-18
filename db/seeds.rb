@@ -13,12 +13,12 @@ Admin.create!(
 
  User.create(
     [
-       { name: "test", email: "test@test.com", password: "password" },
-       { name: "アーノルド", email: "arnold@test.com", password: "password" },
-       { name: "エドワード", email: "eddy@test.com", password: "password" },
-       { name: "ジョンソン", email: "jon@test.com", password: "password" },
-       { name: "フロイド", email: "may@test.com", password: "password" },
-       { name: "仁", email: "gin@test.com", password: "password" }
+       { name: "test", email: "test@test.com", password: "password", introduction: "testtesttest" },
+       { name: "アーノルド", email: "arnold@test.com", password: "password", introduction: "オリンピア６連覇７回優勝" },
+       { name: "エドワード", email: "eddy@test.com", password: "password", introduction: "フィットネスアパレルを販売しています" },
+       { name: "ジョンソン", email: "jon@test.com", password: "password", introduction: "プロレスラー兼アクター" },
+       { name: "フロイド", email: "may@test.com", password: "password", introduction: "スウィートサイエンス　無敗の男" },
+       { name: "仁", email: "gin@test.com", password: "password", introduction: "目標はオリンピア出場" }
     ]
   )
 
