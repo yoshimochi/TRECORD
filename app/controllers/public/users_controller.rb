@@ -61,7 +61,7 @@ class Public::UsersController < ApplicationController
   end
 
   def search
-    @users = User.search(params[:keyword])
+    @users = User.search(params[:keyword]).order(created_at: :asc).page(params[:page]).per(10)
     @keyword = params[:keyword]
     render "index"
   end
