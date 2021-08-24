@@ -79,9 +79,9 @@ ActiveRecord::Schema.define(version: 2021_08_02_054728) do
   end
 
   create_table "set_events", force: :cascade do |t|
-    t.float "weight", default: 0.0
-    t.integer "rep", default: 0
-    t.integer "set", default: 0
+    t.float "weight"
+    t.integer "rep"
+    t.integer "set"
     t.float "max"
     t.integer "training_record_id"
     t.datetime "created_at", null: false
