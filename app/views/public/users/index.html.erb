@@ -30,7 +30,7 @@
       <div class="flex items-start w-2/5">
         <div class="w-10 h-10 rounded mr-3">
           <div class="rounded-full h-10 w-10 bg-gray-300 m-auto">
-            <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg",width: "48", height: "48" %>
+            <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg",  format: 'jpeg', size: '48x48' %>
           </div>
         </div>
         <div class="flex-1 overflow-hidden">
@@ -49,20 +49,26 @@
               <%= user.followers.count %> Follower
             <% end %>
             <%= link_to following_path("#{user.name}") do %>
-              <%= user.followings.count %> Follow
+              <%= user.following.count %> Follow
             <% end %>
           </p>
         </div>
       </div>
       <p class="w-2/5"><%= user.introduction %></p>
       <label for="status" class="font-bold w-1/5 text-right">
-       <% if logged_in? && current_user != @user %>
-          <% if current_user.following?(@user) %>
-            <%= button_to 'フォロー解除', relationship_path(current_user.relationships.find_by(follower: user)), method: :delete, class: "btn btn-primary" %>
-          <% else %>
-            <%= button_to 'フォロー', relationships_path(follower: user), class: "btn btn-outline-primary" %>
+      <% unless current_user?(user) %>
+        <% if current_user.following?(user) %>
+          <%= form_for(current_user.active_relationships.find_by(followed_id: user.id),
+                       html: { method: :delete }) do |f| %>
+            <%= f.submit "フォローをやめる", class: "btn btn-danger" %>
+          <% end %>
+        <% else %>
+          <%= form_for(current_user.active_relationships.build) do |f| %>
+            <div><%= hidden_field_tag :followed_id, user.id %></div>
+            <%= f.submit "フォローする", class: "btn btn-primary" %>
           <% end %>
         <% end %>
+      <% end %>
       </label>
     </li>
   </ul>

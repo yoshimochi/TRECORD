@@ -12,7 +12,7 @@ class Public::EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     if @event.save
-      redirect_to events_path
+      redirect_to request.referer
     else
       render :new
     end

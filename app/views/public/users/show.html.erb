@@ -28,12 +28,18 @@
                       <% if user_signed_in? && @user == current_user %>
                         <%= link_to "プロフィール編集", "/#{current_user.name}/edit", class: "btn btn-outline-dark btn-sm btn-block" %>
                       <% end %>
-                      <div class="follow-button">
-                      <% if logged_in? && current_user != @user %>
+                      <div class="follow-button mt-3">
+                      <% unless current_user?(@user) %>
                         <% if current_user.following?(@user) %>
-                          <%= button_to 'フォロー解除', relationship_path(current_user.relationships.find_by(follower: @user)), method: :delete, class: "btn btn-primary" %>
+                          <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
+                                       html: { method: :delete }) do |f| %>
+                            <%= f.submit "フォローをやめる", class: "btn btn-danger" %>
+                          <% end %>
                         <% else %>
-                          <%= button_to 'フォロー', relationships_path(follower: @user), class: "btn btn-outline-primary" %>
+                          <%= form_for(current_user.active_relationships.build) do |f| %>
+                            <div><%= hidden_field_tag :followed_id, @user.id %></div>
+                            <%= f.submit "フォローする", class: "btn btn-primary" %>
+                          <% end %>
                         <% end %>
                       <% end %>
                       </div>
@@ -66,7 +72,7 @@
                     <li class="list-inline-item">
                         <h5 class="font-weight-bold mb-0 d-block">
                           <%= link_to following_path("#{@user.name}") do %>
-                            <%= @user.followings.count %>
+                            <%= @user.following.count %>
                           <% end %>
                         </h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Following</small>
                     </li>

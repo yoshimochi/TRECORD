@@ -74,7 +74,6 @@ gem 'safe_attributes'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 
-
 gem 'kaminari', '~> 1.2.1'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
@@ -84,6 +83,7 @@ gem 'cocoon'
 
 gem 'simple_calendar', '~>2.0'
 gem 'rails-i18n', '~> 5.1'
+gem 'devise-i18n'
 
 gem 'dotenv-rails'
 group :production do

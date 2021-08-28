@@ -16,6 +16,9 @@
 
 <div class="user__record">
   <div class="record--btn">
+  <% if user_signed_in? && @user == current_user %>
+    <%= link_to '削除', record_path(@record), method: :delete, class: "btn btn-danger ml-3" %>
+  <% end %>
     <%= link_to '一覧に戻る', root_path, class: "btn btn-primary" %>
   </div>
 
@@ -25,7 +28,7 @@
             <thead class="card__record-head">
                 <tr>
                    <th colspan="4" class= "text-center">
-                       <%= training_record.name %> <%= link_to '削除', record_path(@record), method: :delete, class: "btn btn-danger btn-sm ml-3" %>
+                      <%= training_record.name %>
                    </th>
                 </tr>
             </thead>
@@ -39,7 +42,7 @@
                 <tr>
                     <td><%= set_event.weight %> Kg</td>
                     <td><%= set_event.rep %> 回</td>
-                    <td><%= ( (set_event.weight * set_event.rep / 40 ) + set_event.weight) %> Kg</td>
+                    <td><%= set_event.max %> Kg</td>
                 </tr>
                 <% end %>
             </tbody>

@@ -28,7 +28,7 @@ class Admin::UsersController < ApplicationController
   def following
     @title = "Following"
     @user = User.find(params[:user_id])
-    @users = @user.followings
+    @users = @user.following
     render 'show_following'
   end
 
