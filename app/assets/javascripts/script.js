@@ -19,14 +19,14 @@
   });
 });
 
-$(function(){
-  $('#new-record').on('click', function(){
-    if($('#record_comment').val() === ''){
-      alert('タイトルを入力してください！');
-      $('#record_comment').focus();
-      return false;
-    }
-    alert('送信完了！');
-  });
-});
+// $(function(){
+//   $('#new-record').on('click', function(){
+//     if($('#record_comment').val() === ''){
+//       alert('タイトルを入力してください！');
+//       $('#record_comment').focus();
+//       return false;
+//     }
+//     alert('送信完了！');
+//   });
+// });
 
