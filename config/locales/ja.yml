@@ -66,16 +66,23 @@ ja:
       short: "%m/%d %H:%M"
     pm: 午後
 
-    attributes:
-      event:
-        name: 入力した種目
-
-
-    attributes:
-      record:
-        comment: タイトル
-
+ja:
+  activerecord:
     attributes:
       post:
         body: 投稿内容
 
+ja:
+  activerecord:
+    # 追加
+    attributes:
+      event:
+        name: 名前
+        genre: ジャンル名
+
+ja:
+  activerecord:
+    # 追加
+    attributes:
+      record:
+        comment: タイトル
