@@ -21,6 +21,13 @@
       <%= yield %>
     </div>
 
+    <span id="back">
+      <a href="#">
+        <div class="img"><%= image_tag 'arrow.png' %></div>
+      </a>
+    </span>
+
+
   <footer class="footer">
   <% if admin_signed_in? %>
     <%= link_to  admin_root_path , id: "HomeIcon"  do %>

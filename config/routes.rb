@@ -39,6 +39,8 @@ Rails.application.routes.draw do
     patch '/update_record' => 'records#update_record'
     delete '/delete_record' => 'records#delete_record'
 
+    resources :training_records
+
     resources :users
     get 'search' => 'users#search'
     get '/:username/unsubscribe' => 'users#unsubscribe'
