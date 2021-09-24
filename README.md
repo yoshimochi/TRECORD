@@ -6,7 +6,8 @@
 ## サイト概要
 ユーザーがトレーニング内容を記録したり、その内容を投稿することができるアプリです。
 また、ユーザーが他のユーザーの投稿を見て、トレーニングの参考にしたり、コメントから質問をすることでトレーニングのモチベーションアップやレベルアップを狙っています。
-<img width="1440" alt="toppage" src="https://user-images.githubusercontent.com/79985208/134690126-e2535a05-c86b-412a-9e2f-4b09754d93f9.png">
+<img width="700" alt="toppage" src="https://user-images.githubusercontent.com/79985208/134690126-e2535a05-c86b-412a-9e2f-4b09754d93f9.png"> <img width="700" alt="about" src="https://user-images.githubusercontent.com/79985208/134690401-95af2757-cce1-4e88-be95-6f2d22f59f6a.png">
+
 
 ### サイトテーマ
 トレーニングSNS兼トレーニング内容の記録サイト
