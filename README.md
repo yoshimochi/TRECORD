@@ -8,7 +8,7 @@
 また、ユーザーが他のユーザーの投稿を見て、トレーニングの参考にしたり、コメントから質問をすることでトレーニングのモチベーションアップやレベルアップを狙っています。
 
 <div align="center">
-  <img width="500" alt="toppage" src="https://user-images.githubusercontent.com/79985208/134690126-e2535a05-c86b-412a-9e2f-4b09754d93f9.png">
+  <img width="500" alt="toppage" src="https://user-images.githubusercontent.com/79985208/134690126-e2535a05-c86b-412a-9e2f-4b09754d93f9.png"> 
   <img width="500" alt="about" src="https://user-images.githubusercontent.com/79985208/134690401-95af2757-cce1-4e88-be95-6f2d22f59f6a.png">
   <img width="500" alt="record" src="https://user-images.githubusercontent.com/79985208/134690594-908cac4f-274a-441e-812d-22181a1c034c.png">
 </div>
@@ -33,7 +33,7 @@
 
 ### AWS構想図
 <div align="center">
-  ![TRECORD AWS構想図-ページ3 (3)](https://user-images.githubusercontent.com/79985208/134925532-9acd79d2-22c8-4a87-b8ba-f331233c50bc.jpg)
+  <img width="500" alt="TRECORD AWS構想図" src="https://user-images.githubusercontent.com/79985208/134927369-dadbb90f-e832-4dd2-9897-543942e48438.png">
 </div>
 
 ### Ul Flows
