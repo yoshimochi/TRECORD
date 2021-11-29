@@ -1,49 +1,52 @@
-<div class="container users-title">
-   <div class="row">
-     <div class="col-12">
-       <h1 class="page-title collapse2">Followers</h1>
+<div class="container">
+  
+  <div class="users-title">
+     <div class="row">
+       <div class="col-12">
+         <h1 class="page-title collapse2">Followers</h1>
+       </div>
+     </div>
+     <div class="row">
+       <div class="col-12">
+         <p class="page-title-translate collapse3"><%= @user.name %>さんのフォロワー</p>
+       </div>
      </div>
    </div>
-   <div class="row">
-     <div class="col-12">
-       <p class="page-title-translate collapse3"><%= @user.name %>さんのフォロワー</p>
-     </div>
-   </div>
- </div>
-
-
-<div class="user__follow my-3 p-3 bg-white rounded shadow-sm">
-  <% if @users.any? %>
-    <% @users.each do |user| %>
-    <div class="media text-muted pt-3">
-      <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg",width: "48", height: "48", class: "mr-2 rounded" %>
-      <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        <div class="d-flex justify-content-between align-items-center w-100">
-          <strong class="text-gray-dark">
-            <%= link_to "/#{user.name}" do %>
-              <%= user.name %>
-            <% end %>
-          </strong>
-          <div class="follow-button">
-
+  
+  
+  <div class="user__follow my-3 p-3 bg-white rounded shadow-sm">
+    <% if @users.any? %>
+      <% @users.each do |user| %>
+      <div class="media text-muted pt-3">
+        <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg",width: "48", height: "48", class: "mr-2 rounded" %>
+        <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <div class="d-flex justify-content-between align-items-center w-100">
+            <strong class="text-gray-dark">
+              <%= link_to "/#{user.name}" do %>
+                <%= user.name %>
+              <% end %>
+            </strong>
+            <div class="follow-button">
+  
+            </div>
           </div>
+          <span class="d-block">
+            <%= link_to "/#{user.name}" do %>
+              <%= user.posts.count %> Post
+            <% end %>
+            <%= link_to follower_path("#{user.name}") do %>
+              <%= user.followers.count %> Follower
+            <% end %>
+            <%= link_to following_path("#{user.name}") do %>
+              <%= user.following.count %> Following
+            <% end %>
+          </span>
+          <span class="d-block">
+            <%= user.introduction %>
+          </span>
         </div>
-        <span class="d-block">
-          <%= link_to "/#{user.name}" do %>
-            <%= user.posts.count %> Post
-          <% end %>
-          <%= link_to follower_path("#{user.name}") do %>
-            <%= user.followers.count %> Follower
-          <% end %>
-          <%= link_to following_path("#{user.name}") do %>
-            <%= user.following.count %> Following
-          <% end %>
-        </span>
-        <span class="d-block">
-          <%= user.introduction %>
-        </span>
       </div>
-    </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
